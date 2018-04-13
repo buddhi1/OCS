@@ -22,10 +22,10 @@
 	@endif
 
 	@if(\Session::has('success'))
-        <div class="alert alert-success">
-            {{\Session::get('success')}}
-        </div>
-    @endif
+      <div class="alert alert-success">
+          {{\Session::get('success')}}
+      </div>
+  @endif
 
   <form action="{{url('/child')}}" method="POST">
         <div class="container">

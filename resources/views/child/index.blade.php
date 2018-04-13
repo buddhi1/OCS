@@ -9,6 +9,12 @@
 		<h3>Children Information not found!!! Try again</h3>
 	</div>
 @else
+@if(\Session::has('error'))
+    <div class="alert alert-success">
+        {{\Session::get('error')}}
+    </div>
+@endif
+
 	<table border="1">
 		<tr>
 			<th>id</th>
@@ -25,9 +31,8 @@
 			<td>{{$child->type}}</td>
 			<td>{{$child->dob}}</td>
 			<td>
-				<form>
+				<form  action="{{url('child')}}/{{$child->id}}/edit" action="GET">
 					<button>Edit</button>
-					<input type="hidden" value="{{$child->id}}" name="id">
 				</form>
 			</td>
 			<td>

@@ -80,6 +80,7 @@ class ChildController extends Controller
     public function show($id)
     {
         //
+        dd("herreee");
     }
 
     /**
@@ -90,7 +91,19 @@ class ChildController extends Controller
      */
     public function edit($id)
     {
-        //
+        if($id) {
+            $child = DB::table('children')->where('id', $id)->first();
+            if ($child) {
+                return view('child.edit')
+                        ->with('child', $child);
+            } else {
+                return redirect('/child')
+                        ->with('error', 'Child information not found. Try again');
+            }
+        } else {
+            return redirect('/child')
+                    ->with('error', 'Invalid child information. Try again');
+        }
     }
 
     /**
@@ -102,7 +115,47 @@ class ChildController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($id);
+        if ($id) {
+            $child = DB::table('children')->where('id', $id)->first();
+            if ($child) {
+                $data = $this->validate($request, [
+                                    'first_name'=>'required', 
+                                    'last_name'=>'required', 
+                                    'cps_no'=>'required',
+                                    'type'=>'required',
+                                    'caseworker_id'=>'required',
+                                    'advocate_id'=>'required',
+                                    'dob'=>'required',
+                                    'address1'=>'required',
+                                    'city'=>'required',
+                                    'zip'=>'required',
+                                    'county'=>'required'
+                                    ]);
+                $child->first_name = $data['first_name'];
+                $child->last_name = $data['last_name'];
+                $child->cps_no = $data['cps_no'];
+                $child->type = $data['type'];
+                $child->caseworker_id = $data['caseworker_id'];
+                $child->advocate_id = $data['advocate_id'];
+                $child->dob = $data['dob'];
+                $child->school_id = $request['school_id'];
+                $child->school_id = $request['class'];
+                $child->address1 = $data['address1'];
+                $child->city = $data['city'];
+                $child->zip = $data['zip'];
+                $child->county = $data['county'];
+                $child->save();
+                return redirect('/child')
+                                ->with('success', 'Child information updated successflly!!!');
+            } else {
+                return redirect('/child')
+                        ->with('error', 'Child information not found. Try again');
+            }
+        } else {
+            return redirect('/child')
+                    ->with('error', 'Invalid child information. Try again');
+        }
     }
 
     /**
