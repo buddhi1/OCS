@@ -68,7 +68,7 @@ class ChildController extends Controller
         $child->county = $data['county'];
         $child->save();
         return redirect('/child/create')
-                        ->with('success', 'Child information saved successfully!!!');
+                        ->with('success', 'Child information saved successfully!');
     }
 
     /**
