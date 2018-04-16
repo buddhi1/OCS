@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Caregiver controller resource route
+Route::resource('/caregiver', 'CaregiverController');
