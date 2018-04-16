@@ -4,7 +4,22 @@
 	<title></title>
 </head>
 <body>
-	<form action="{{url('caseWorker')}}" method="POST">
+@if ($errors->any())
+<div class="alert alert-danger">
+	<ul>
+	@foreach ($errors->all() as $error)
+		<li>{{ $error }}</li>
+	@endforeach
+	</ul>
+</div><br />
+@endif
+
+@if(\Session::has('success'))
+<div class="alert alert-success">
+  {{\Session::get('success')}}
+</div>
+@endif
+	<form action="{{url('caseworker')}}" method="POST">
 		{{csrf_field()}}
 <h1>Case Worker Information</h1>
 <label>first name</label>
@@ -20,13 +35,13 @@
 <input type="text" name="address">
 
 <label>zip code</label>
-<input type="text" name="zip">
+<input type="text" name="zip_code">
 
 <label>country</label>
 <input type="text" name="country">
 
 <label>e-mail</label>
-<input type="text" name="e-mail">
+<input type="text" name="email">
 
 <button type="Submit">Submit</button>
 </form>

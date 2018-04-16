@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Caseworker;
 
 class CaseworkerController extends Controller
 {
@@ -15,6 +17,9 @@ class CaseworkerController extends Controller
     public function index()
     {
         //
+        $caseworker = DB::table('caseworkers')->get();
+        return view('caseworker.index')
+                    ->with('caseworkers', $caseworker);
     }
 
     /**
@@ -25,7 +30,7 @@ class CaseworkerController extends Controller
     public function create()
     {
         // return caseWorker commnet
-        return view('case_worker.create');
+        return view('caseworker.create');
     }
 
     /**
@@ -36,7 +41,28 @@ class CaseworkerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $caseworker = new Caseworker();
+        $data = $this->validate($request, [
+                            'first_name'=>'required', 
+                            'last_name'=>'required',
+                            'email'=>'required',                            
+                            'phone'=>'required',
+                            'address'=>'required',
+                            'zip_code'=>'required',
+                            'country'=>'required'
+                                ]);
+        $caseworker->first_name = $data['first_name'];
+        $caseworker->last_name = $data['last_name'];
+        $caseworker->email = $data['email'];
+        $caseworker->phone = $data['phone'];
+        $caseworker->address = $data['address'];
+        $caseworker->zip_code = $data['zip_code'];
+        $caseworker->country = $data['country'];
+        $caseworker->save();
+        return redirect ('/caseworker/create')
+                         ->with('success','case worker information saved successfully');
+
     }
 
     /**
@@ -59,6 +85,19 @@ class CaseworkerController extends Controller
     public function edit($id)
     {
         //
+        if($id) {
+            $caseworker = DB::table('caseworkers')->where('id', $id)->first();
+            if ($caseworker) {
+                return view('caseworker.edit')
+                        ->with('caseworker', $caseworker);
+            } else {
+                return redirect('/caseworker')
+                        ->with('error', 'Child information not found. Try again');
+            }
+        } else {
+            return redirect('/caseworker')
+                    ->with('error', 'Invalid child information. Try again');
+        }
     }
 
     /**
@@ -70,7 +109,36 @@ class CaseworkerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($id) {
+            $caseworker = Caseworker::find($id);
+            if ($caseworker) {
+        $data = $this->validate($request, [
+                            'first_name'=>'required', 
+                            'last_name'=>'required',
+                            'email'=>'required',                            
+                            'phone'=>'required',
+                            'address'=>'required',
+                            'zip_code'=>'required',
+                            'country'=>'required'
+                                ]);
+        $caseworker->first_name = $data['first_name'];
+        $caseworker->last_name = $data['last_name'];
+        $caseworker->email = $data['email'];
+        $caseworker->phone = $data['phone'];
+        $caseworker->address = $data['address'];
+        $caseworker->zip_code = $data['zip_code'];
+        $caseworker->country = $data['country'];
+        $caseworker->save();
+                return redirect('/caseworker')
+                                ->with('success', 'Case worker information updated successfully!!!');
+            } else {
+                return redirect('/caseworker')
+                        ->with('error', 'case worker information not found. Try again');
+            }
+        } else {
+            return redirect('/caseworker')
+                    ->with('error', 'Invalid case worker information. Try again');
+        }
     }
 
     /**
@@ -81,6 +149,21 @@ class CaseworkerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($id) {
+            $caseworker = Caseworker::find($id);
+            if ($caseworker) {
+                $caseworker->delete();
+
+                return redirect('/caseworker')
+                        ->with('success', 'Case worker information deleted successfully');
+            } else {
+                return redirect('/caseworker')
+                        ->with('error', 'Case worker information not found. Try again');
+            }
+        } else {
+            return redirect('/caseworker')
+                    ->with('error', 'Invalid case worker information. Try again');
+        }
+        
     }
 }

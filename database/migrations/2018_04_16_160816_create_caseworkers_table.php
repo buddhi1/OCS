@@ -17,11 +17,11 @@ class CreateCaseworkersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email');
             $table->integer('phone');
             $table->string('address');
             $table->string('zip_code');
             $table->string('country');
+            $table->string('email');
             $table->timestamps();
         });
     }
