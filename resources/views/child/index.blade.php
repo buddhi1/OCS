@@ -18,7 +18,7 @@
   <div class="alert alert-success">
       {{\Session::get('success')}}
   </div>
-  @endif
+ @endif
 
 	<table border="1">
 		<tr>

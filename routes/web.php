@@ -19,7 +19,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Caregiver controller resource route
+Route::resource('/caregiver', 'CaregiverController');
+
 //child cotroller resource route
 Route::resource('child', 'ChildController');
 
+
 Route::resource('caseworker','CaseworkerController');
+
+//school cotroller resource route
+Route::resource('school', 'SchoolController');
+
