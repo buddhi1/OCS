@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //child cotroller resource route
 Route::resource('child', 'ChildController');
+
+Route::resource('caseWorker','CaseworkerController');
