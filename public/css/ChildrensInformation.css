@@ -1,0 +1,19 @@
+body{
+  background-color:#F0F2F2;
+  padding-top: 70px;
+
+}
+
+ h1{
+   text-align: center;
+
+ }
+ @media only screen and (max-width: 600px) {
+
+   .btn{
+     margin: 0px;
+     text-align: right;
+     width: 70%;
+   }
+
+}
