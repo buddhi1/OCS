@@ -27,7 +27,8 @@
         </div>
     @endif
 
-  <form action="{{url('/child')}}/{{$child->id}}" method="PUT">
+  {!! Form::open(['url' => 'foo/bar', 'method' => 'put']) !!}
+  <!-- <form action="{{url('/child')}}/{{$child->id}}" method="PUT"> -->
         <div class="container">
           <legend>Children Information</legend>
           <input type="hidden" value="{{csrf_token()}}" name="_token" />
@@ -165,6 +166,7 @@
         </div>
           </div>
         </div>
-    </form>
+    <!-- </form> -->
+    {!! Form::close() !!}
   </body>
 </html>
