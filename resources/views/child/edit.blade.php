@@ -27,11 +27,11 @@
         </div>
     @endif
 
-  {!! Form::open(['url' => 'foo/bar', 'method' => 'put']) !!}
-  <!-- <form action="{{url('/child')}}/{{$child->id}}" method="PUT"> -->
+  <form action="{{url('child', [$child->id])}}" method="POST">
+    {{method_field('PATCH')}}
+    {{ csrf_field() }}
         <div class="container">
           <legend>Children Information</legend>
-          <input type="hidden" value="{{csrf_token()}}" name="_token" />
           <div class="row">
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
@@ -166,7 +166,6 @@
         </div>
           </div>
         </div>
-    <!-- </form> -->
-    {!! Form::close() !!}
+    </form>
   </body>
 </html>

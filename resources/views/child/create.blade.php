@@ -28,9 +28,9 @@
   @endif
 
   <form action="{{url('/child')}}" method="POST">
+    {{ csrf_field() }}
         <div class="container">
           <legend>Children Information</legend>
-          <input type="hidden" value="{{csrf_token()}}" name="_token" />
           <div class="row">
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">

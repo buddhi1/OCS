@@ -14,6 +14,11 @@
         {{\Session::get('error')}}
     </div>
 @endif
+@if(\Session::has('success'))
+  <div class="alert alert-success">
+      {{\Session::get('success')}}
+  </div>
+  @endif
 
 	<table border="1">
 		<tr>
@@ -28,15 +33,29 @@
 		<tr>
 			<td>{{$child->id}}</td>
 			<td>{{$child->last_name}} ,{{$child->first_name}}</td>
-			<td>{{$child->type}}</td>
+			<td>
+				@if($child->type ==1)
+					Biological Child 
+				@elseif($child->type ==2)
+					Kinship Partner 
+				@elseif($child->type ==3)
+					Foster 
+				@elseif($child->type ==4)
+					Adoption Prep
+				@elseif($child->type ==5) 
+					Adopted 
+				@endif
+			</td>
 			<td>{{$child->dob}}</td>
 			<td>
-				<form  action="{{url('child')}}/{{$child->id}}/edit" action="GET">
+				<form  action="{{url('child', [$child->id])}}/edit">
 					<button>Edit</button>
 				</form>
 			</td>
 			<td>
-				<form>
+				<form action="{{url('child', [$child->id])}}" method="POST">
+   					 {{method_field('DELETE')}}
+					{{ csrf_field() }}
 					<button>Delete</button>
 					<input type="hidden" value="{{$child->id}}" name="id">
 				</form>

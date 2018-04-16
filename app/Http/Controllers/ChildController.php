@@ -45,9 +45,9 @@ class ChildController extends Controller
                             'last_name'=>'required', 
                             'cps_no'=>'required',
                             'type'=>'required',
-                            'caseworker_id'=>'required',
-                            'advocate_id'=>'required',
-                            'dob'=>'required',
+                            'caseworker_id'=>'bail|required|integer',
+                            'advocate_id'=>'bail|required|integer',
+                            'dob'=>'bail|required|date',
                             'address1'=>'required',
                             'city'=>'required',
                             'zip'=>'required',
@@ -68,7 +68,7 @@ class ChildController extends Controller
         $child->county = $data['county'];
         $child->save();
         return redirect('/child/create')
-                        ->with('success', 'Child information saved successflly!!!');
+                        ->with('success', 'Child information saved successfully!!!');
     }
 
     /**
@@ -115,18 +115,17 @@ class ChildController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($id);
         if ($id) {
-            $child = DB::table('children')->where('id', $id)->first();
+            $child = Child::find($id);
             if ($child) {
                 $data = $this->validate($request, [
                                     'first_name'=>'required', 
                                     'last_name'=>'required', 
                                     'cps_no'=>'required',
                                     'type'=>'required',
-                                    'caseworker_id'=>'required',
-                                    'advocate_id'=>'required',
-                                    'dob'=>'required',
+                                    'caseworker_id'=>'bail|required|integer',
+                                    'advocate_id'=>'bail|required|integer',
+                                    'dob'=>'bail|required|date',
                                     'address1'=>'required',
                                     'city'=>'required',
                                     'zip'=>'required',
@@ -147,7 +146,7 @@ class ChildController extends Controller
                 $child->county = $data['county'];
                 $child->save();
                 return redirect('/child')
-                                ->with('success', 'Child information updated successflly!!!');
+                                ->with('success', 'Child information updated successfully!!!');
             } else {
                 return redirect('/child')
                         ->with('error', 'Child information not found. Try again');
@@ -166,6 +165,20 @@ class ChildController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($id) {
+            $child = Child::find($id);
+            if ($child) {
+                $child->delete();
+
+                return redirect('/child')
+                        ->with('success', 'Child information deleted successfully');
+            } else {
+                return redirect('/child')
+                        ->with('error', 'Child information not found. Try again');
+            }
+        } else {
+            return redirect('/child')
+                    ->with('error', 'Invalid child information. Try again');
+        }
     }
 }
