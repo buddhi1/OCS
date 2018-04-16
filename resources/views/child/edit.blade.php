@@ -22,10 +22,10 @@
 	@endif
 
 	@if(\Session::has('child'))
-        <div class="alert alert-success">
-            {{dd('child')}}
-        </div>
-    @endif
+      <div class="alert alert-success">
+          Error
+      </div>
+  @endif
 
   <form action="{{url('child', [$child->id])}}" method="POST">
     {{method_field('PATCH')}}
