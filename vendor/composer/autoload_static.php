@@ -311,6 +311,8 @@ class ComposerStaticInitb3622b5504450b822822c12fafad7d91
     );
 
     public static $classMap = array (
+        'App\\Caregiver' => __DIR__ . '/../..' . '/app/Caregiver.php',
+        'App\\Caseworker' => __DIR__ . '/../..' . '/app/Caseworker.php',
         'App\\Child' => __DIR__ . '/../..' . '/app/Child.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -318,6 +320,7 @@ class ComposerStaticInitb3622b5504450b822822c12fafad7d91
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\CaregiverController' => __DIR__ . '/../..' . '/app/Http/Controllers/CaregiverController.php',
         'App\\Http\\Controllers\\CaseworkerController' => __DIR__ . '/../..' . '/app/Http/Controllers/CaseworkerController.php',
         'App\\Http\\Controllers\\ChildController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChildController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
@@ -334,6 +337,7 @@ class ComposerStaticInitb3622b5504450b822822c12fafad7d91
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\School' => __DIR__ . '/../..' . '/app/School.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
