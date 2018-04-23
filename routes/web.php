@@ -27,9 +27,11 @@ Route::resource('/caregiver', 'CaregiverController');
 //child cotroller resource route
 Route::resource('child', 'ChildController');
 
-
+// case worker resource route
 Route::resource('caseworker','CaseworkerController');
 
 //school cotroller resource route
 Route::resource('school', 'SchoolController');
 
+// agency controller resource route
+Route::resource('agency', 'AgencyController');

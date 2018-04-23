@@ -47,7 +47,7 @@ class CaseworkerController extends Controller
                             'first_name'=>'required', 
                             'last_name'=>'required',
                             'email'=>'required',                            
-                            'phone'=>'required',
+                            'phone'=>'bail|required|max:10',
                             'address'=>'required',
                             'zip_code'=>'required',
                             'country'=>'required'
@@ -116,7 +116,7 @@ class CaseworkerController extends Controller
                             'first_name'=>'required', 
                             'last_name'=>'required',
                             'email'=>'required',                            
-                            'phone'=>'required',
+                            'phone'=>'bail|required|max:10',
                             'address'=>'required',
                             'zip_code'=>'required',
                             'country'=>'required'
