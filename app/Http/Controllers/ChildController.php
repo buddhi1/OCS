@@ -15,7 +15,7 @@ class ChildController extends Controller
      */
     public function index()
     {
-        $children = DB::table('children')->get();
+        $children = DB::table('children')->paginate(10);
         return view('child.index')
                     ->with('children', $children);
     }

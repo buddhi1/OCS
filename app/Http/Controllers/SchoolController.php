@@ -16,7 +16,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $schools = DB::table('schools')->get();
+        $schools = DB::table('schools')->paginate(10);
         return view('school.index')
                     ->with('schools', $schools);
     }
@@ -126,6 +126,28 @@ class SchoolController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($id) {
+            $school = School::find($id);
+            if ($school) {
+                $school->delete();
+
+                return redirect('/school')
+                        ->with('success', 'School information deleted successfully');
+            } else {
+                return redirect('/school')
+                        ->with('error', 'School information not found. Try again');
+            }
+        } else {
+            return redirect('/school')
+                    ->with('error', 'Invalid school information. Try again');
+        }
+    }
+
+    //retruns all names of the schools
+    public function all(Request $request) 
+    {
+        dd('OKKKKK');
+        // $name = $request->name;
+        // $schools = DB::table('schools')->where('name', $name)->get();
     }
 }

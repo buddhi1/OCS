@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/school/all', 'SchoolController@all');
+
 //Caregiver controller resource route
 Route::resource('/caregiver', 'CaregiverController');
 

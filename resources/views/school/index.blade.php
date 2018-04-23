@@ -38,13 +38,16 @@
 			</form>
 		</td>
 		<td>
-			<form>
-				<button type="submit">Delete</button>
+			<form action="{{url('school', [$school->id])}}" method="POST">
+				{{method_field('DELETE')}}
+				{{ csrf_field() }}
+				<button>Delete</button>
 			</form>
 		</td>
 	</tr>
 	@endforeach
 </table>
+{{ $schools->links() }}
  @endif
 </body>
 </html>

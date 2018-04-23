@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="ChildrensInformation.css">
+    <link rel="stylesheet" href="{{url('/')}}/css/ChildrensInformation.css">
   </head>
   <body>
 	@if ($errors->any())
@@ -115,7 +115,7 @@
        <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_firstname">What is the name of school?</label>
-               <input class="form-control" id="user_firstname" name="school_id" size="30" type="text" />
+               <input class="form-control" id="school_name" name="school_name" size="30" type="text" />
            </div>
        </div>
        <div class='col-sm-4'>
@@ -166,5 +166,13 @@
           </div>
         </div>
     </form>
+    <script type="text/javascript">
+      var url = "{{url('/')}}";
+    </script>
+     <script type="text/javascript" src="{{url('/')}}/js/ajax.js"></script>
+    <script type="text/javascript" src="{{url('/')}}/js/general.js"></script>
+    <script type="text/javascript">
+      document.getElementById("school_name").addEventListener("keyup", loadSchoolsByName);
+    </script>
   </body>
 </html>

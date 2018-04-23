@@ -54,15 +54,15 @@
 			</td>
 			<td>
 				<form action="{{url('child', [$child->id])}}" method="POST">
-   					 {{method_field('DELETE')}}
+   					{{method_field('DELETE')}}
 					{{ csrf_field() }}
 					<button>Delete</button>
-					<input type="hidden" value="{{$child->id}}" name="id">
 				</form>
 			</td>
 		</tr>
 		@endforeach
 	</table>
+	{{ $children->links() }}
 @endif
 </body>
 </html>
