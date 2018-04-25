@@ -166,4 +166,19 @@ class CaseworkerController extends Controller
         }
         
     }
+
+    //retruns all names of the caseworkers
+    public function all(Request $request) 
+    {
+        if ($request) {
+            $name = $request['name'];
+            $caseworkers = DB::table('caseworkers')
+                        ->select('id', 'first_name', 'last_name')
+                        ->where('last_name', 'like', $name.'%')                        
+                        // ->where('first_name', 'like', $name.'%')
+                        ->get();    
+            return json_encode($caseworkers);
+        }
+        
+    }
 }

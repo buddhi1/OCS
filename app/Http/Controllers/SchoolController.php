@@ -146,8 +146,14 @@ class SchoolController extends Controller
     //retruns all names of the schools
     public function all(Request $request) 
     {
-        dd('OKKKKK');
-        // $name = $request->name;
-        // $schools = DB::table('schools')->where('name', $name)->get();
+        if ($request) {
+            $name = $request['name'];
+            $schools = DB::table('schools')
+                        ->select('id', 'name')
+                        ->where('name', 'like', $name.'%')
+                        ->get();        
+            return json_encode($schools);
+        }
+        
     }
 }

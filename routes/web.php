@@ -19,7 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//ajax request for loading all school name
 Route::get('/school/all', 'SchoolController@all');
+
+//ajax request for loading all case worker name
+Route::get('/caseworker/all', 'CaseworkerController@all');
 
 //Caregiver controller resource route
 Route::resource('/caregiver', 'CaregiverController');

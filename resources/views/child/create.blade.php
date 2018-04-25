@@ -2,6 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+               integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+               crossorigin="anonymous">
+    </script>
     <title>Caregiver Information</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -92,7 +97,8 @@
                     <div class="form-group">
                       <label for="example-password-input" class="col-2 col-form-label">What is the name of child's caseworker?</label>
                       <div class="col-10">
-                        <input class="form-control" type="text" value="" id="example-password-input" name="caseworker_id">
+                        <input class="form-control" type="text" value="" name="caseworker_id" id="caseworker_id">
+                        <ul id="caseworker-list"></ul>
                       </div>
                     </div>
                     <div class="form-group">
@@ -106,26 +112,27 @@
                     <fieldset>
    <legend>School Info for school supplies?</legend>
    <div class='row'>
-       <div class='col-sm-4'>
+      <!--  <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_title">What is school district?</label>
                <input class="form-control" id="user_title" name="" size="30" type="text" />
            </div>
-       </div>
+       </div> -->
        <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_firstname">What is the name of school?</label>
                <input class="form-control" id="school_name" name="school_name" size="30" type="text" />
+               <select id="school-list"></select>
            </div>
        </div>
-       <div class='col-sm-4'>
+       <!-- <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_lastname">Grade?</label>
                <input class="form-control" id="user_lastname" name="class" size="30" type="text" />
            </div>
 
 
-       </div>
+       </div> -->
    </div>
 
 </fieldset>
@@ -172,7 +179,13 @@
      <script type="text/javascript" src="{{url('/')}}/js/ajax.js"></script>
     <script type="text/javascript" src="{{url('/')}}/js/general.js"></script>
     <script type="text/javascript">
+
+      document.getElementById("caseworker_id").addEventListener("keyup", loadCaseworkersByName);
       document.getElementById("school_name").addEventListener("keyup", loadSchoolsByName);
+      window.onload = function() {
+        loadSchoolsByName();
+        loadCaseworkersByName();
+      };
     </script>
   </body>
 </html>
