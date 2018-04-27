@@ -16,7 +16,7 @@ class CustodyController extends Controller
      */
     public function index()
     {
-        //
+        // dd(caregiver_results);
     }
 
     /**
@@ -48,7 +48,7 @@ class CustodyController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -83,5 +83,33 @@ class CustodyController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // Returns the elements in custody table
+    public function search(Request $request)
+    {
+        if($request['address'] && $request['license_level'])
+        {
+            $license_level = $request['license_level'];
+            $address = $request['address']; 
+            $search_name = $request['search_name'];
+            
+            if ($request['address'] == 1) {
+                $address = DB::table('caregivers')
+                            ->where('zipcode', '=', $search_name)
+                            ->where('license_level', '<=', $license_level )   
+                            ->paginate(10);
+            } elseif ($request['address'] == 2) 
+            {
+                $address = DB::table('caregivers') 
+                            ->where('county', '=', $search_name)
+                            ->where('license_level', '<=', $license_level ) 
+                            ->paginate(10);  
+            } 
+            
+            return view('custody.search_results')
+                            ->with('caregiver_results', $address);
+
+        }
     }
 }

@@ -25,6 +25,9 @@ Route::get('/school/all', 'SchoolController@all');
 //ajax request for loading all case worker name
 Route::get('/caseworker/all', 'CaseworkerController@all');
 
+//request for searching caregivers
+Route::post('/custody/search', 'CustodyController@search');
+
 // gift post route returning the CRUD view
 // Route::post('child/gift/add', 'GiftController@indexView');
 
