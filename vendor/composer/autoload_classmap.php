@@ -6,11 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Agency' => $baseDir . '/app/Agency.php',
     'App\\Caregiver' => $baseDir . '/app/Caregiver.php',
     'App\\Caseworker' => $baseDir . '/app/Caseworker.php',
     'App\\Child' => $baseDir . '/app/Child.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Gift' => $baseDir . '/app/Gift.php',
+    'App\\Http\\Controllers\\AgencyController' => $baseDir . '/app/Http/Controllers/AgencyController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -19,6 +22,7 @@ return array(
     'App\\Http\\Controllers\\CaseworkerController' => $baseDir . '/app/Http/Controllers/CaseworkerController.php',
     'App\\Http\\Controllers\\ChildController' => $baseDir . '/app/Http/Controllers/ChildController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\GiftController' => $baseDir . '/app/Http/Controllers/GiftController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\SchoolController' => $baseDir . '/app/Http/Controllers/SchoolController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

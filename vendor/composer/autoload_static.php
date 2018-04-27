@@ -311,11 +311,14 @@ class ComposerStaticInitb3622b5504450b822822c12fafad7d91
     );
 
     public static $classMap = array (
+        'App\\Agency' => __DIR__ . '/../..' . '/app/Agency.php',
         'App\\Caregiver' => __DIR__ . '/../..' . '/app/Caregiver.php',
         'App\\Caseworker' => __DIR__ . '/../..' . '/app/Caseworker.php',
         'App\\Child' => __DIR__ . '/../..' . '/app/Child.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Gift' => __DIR__ . '/../..' . '/app/Gift.php',
+        'App\\Http\\Controllers\\AgencyController' => __DIR__ . '/../..' . '/app/Http/Controllers/AgencyController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -324,6 +327,7 @@ class ComposerStaticInitb3622b5504450b822822c12fafad7d91
         'App\\Http\\Controllers\\CaseworkerController' => __DIR__ . '/../..' . '/app/Http/Controllers/CaseworkerController.php',
         'App\\Http\\Controllers\\ChildController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChildController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\GiftController' => __DIR__ . '/../..' . '/app/Http/Controllers/GiftController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\SchoolController' => __DIR__ . '/../..' . '/app/Http/Controllers/SchoolController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

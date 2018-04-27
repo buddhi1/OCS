@@ -26,6 +26,7 @@
 			<th>Name</th>
 			<th>Type</th>
 			<th>Date of birth</th>
+			<th>Gifts</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
@@ -47,6 +48,13 @@
 				@endif
 			</td>
 			<td>{{$child->dob}}</td>
+			<td>
+				<form  action="{{url('child/gift')}}" method="GET">
+					
+					<input type="hidden" name="child_id" value="{{ $child->id }}">
+					<button>Add</button>
+				</form>
+			</td>
 			<td>
 				<form  action="{{url('child', [$child->id])}}/edit">
 					<button>Edit</button>

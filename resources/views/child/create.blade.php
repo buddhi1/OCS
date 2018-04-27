@@ -125,14 +125,14 @@
                <select id="school-list"></select>
            </div>
        </div>
-       <!-- <div class='col-sm-4'>
+       <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_lastname">Grade?</label>
                <input class="form-control" id="user_lastname" name="class" size="30" type="text" />
            </div>
 
 
-       </div> -->
+       </div>
    </div>
 
 </fieldset>

@@ -25,6 +25,12 @@ Route::get('/school/all', 'SchoolController@all');
 //ajax request for loading all case worker name
 Route::get('/caseworker/all', 'CaseworkerController@all');
 
+// gift post route returning the CRUD view
+// Route::post('child/gift/add', 'GiftController@indexView');
+
+// gift controller resource route
+Route::resource('child/gift', 'GiftController');
+
 //Caregiver controller resource route
 Route::resource('/caregiver', 'CaregiverController');
 
@@ -39,3 +45,6 @@ Route::resource('school', 'SchoolController');
 
 // agency controller resource route
 Route::resource('agency', 'AgencyController');
+
+// custody controller resource route
+Route::resource('custody', 'CustodyController');
