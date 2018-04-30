@@ -78,6 +78,7 @@ class GiftController extends Controller
             }
             $child = DB::table('children')->where('id', '=', $child_id)->first();
             if ($child) {
+                $gift->child_id = $data['child_id'];
                 $gift->item = $data['item'];
                 $gift->type = $data['type'];
                 $gift->save();
@@ -150,7 +151,6 @@ class GiftController extends Controller
                                         ]);
                 $child = DB::table('children')->where('id', '=', $data['child_id'])->first();
                 if ($child) {
-                    $gift->child_id = $data['child_id'];
                     $gift->item = $data['item'];
                     $gift->type = $data['type'];
                     $gift->save();
