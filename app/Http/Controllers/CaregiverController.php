@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Caregiver;
+use App\User;
 
 class CaregiverController extends Controller
 {
@@ -40,14 +41,17 @@ class CaregiverController extends Controller
     public function store(Request $request)
     {
         $caregiver = new Caregiver();
+        $user = new User();
         
-        $data2 = $this->validate($request, ['email'=>'bail|required|unique:users,email']);
+        $data2 = $this->validate($request, ['email'=>'bail|required|unique:users,email',
+                                            'password'=>'required|min:8'
+                                            ]);
         $data = $this->validate($request, [  'first_name'=>'required',
                                              'last_name'=>'required',
                                              'address'=>'required',
                                              'county'=>'required',
                                              'city'=>'required', 
-                                             'zipcode'=>'required', -
+                                             'zipcode'=>'required', 
                                              'cpa'=>'required',
                                              'caseworker_name'=>'required',
                                              'license_type'=>'required',
@@ -60,25 +64,36 @@ class CaregiverController extends Controller
                                              'foster_children_no'=>'required'
                                             ]);
 
-        $caregiver->first_name = $data['first_name'];
-        $caregiver->last_name = $data['last_name'];
-        $caregiver->address = $data['address'];
-        $caregiver->county = $data['county'];        
-        $caregiver->city = $data['city'];
-        $caregiver->zipcode = $data['zipcode'];
-        $caregiver->cpa = $data['cpa'];
-        $caregiver->caseworker_name = $data['caseworker_name'];
-        $caregiver->license_type = $data['license_type'];
-        $caregiver->license_no = $data['license_no'];
-        $caregiver->license_level = $data['license_level'];
-        $caregiver->max_fosterchild_no = $data['max_fosterchild_no'];
-        $caregiver->respite = $data['respite'];
-        $caregiver->bio_children_no = $data['bio_children_no'];
-        $caregiver->kinship_children_no = $data['kinship_children_no'];
-        $caregiver->foster_children_no = $data['foster_children_no'];
-        $caregiver->save();
+        $user->email = $data2['email'];
+        $user->password = App\Hash::make($data2['password']);
+        $user->name = $data['first_name'];
+        
 
-        return redirect('/caregiver/create')->with('success', 'Caregiver information saved successfully!');
+        if($user->save()) {
+            $caregiver->user_id = $user->id;
+            $caregiver->first_name = $data['first_name'];
+            $caregiver->last_name = $data['last_name'];
+            $caregiver->address = $data['address'];
+            $caregiver->county = $data['county'];        
+            $caregiver->city = $data['city'];
+            $caregiver->zipcode = $data['zipcode'];
+            $caregiver->cpa = $data['cpa'];
+            $caregiver->caseworker_name = $data['caseworker_name'];
+            $caregiver->license_type = $data['license_type'];
+            $caregiver->license_no = $data['license_no'];
+            $caregiver->license_level = $data['license_level'];
+            $caregiver->max_fosterchild_no = $data['max_fosterchild_no'];
+            $caregiver->respite = $data['respite'];
+            $caregiver->bio_children_no = $data['bio_children_no'];
+            $caregiver->kinship_children_no = $data['kinship_children_no'];
+            $caregiver->foster_children_no = $data['foster_children_no'];
+            $caregiver->save();
+
+
+            return redirect('/caregiver/create')->with('success', 'Caregiver information saved successfully!');
+        } else {
+            return redirect('/caregiver/create')->with('error', 'Something went wrong. Infromation not saved');
+        }
     }
 
     /**
