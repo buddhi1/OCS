@@ -47,7 +47,7 @@ class CaregiverController extends Controller
                                              'address'=>'required',
                                              'county'=>'required',
                                              'city'=>'required', 
-                                             'zipcode'=>'required', 
+                                             'zipcode'=>'required', -
                                              'cpa'=>'required',
                                              'caseworker_name'=>'required',
                                              'license_type'=>'required',
