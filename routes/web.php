@@ -25,6 +25,9 @@ Route::get('/school/all', 'SchoolController@all');
 //ajax request for loading all case worker name
 Route::get('/caseworker/all', 'CaseworkerController@all');
 
+//ajax request for loading all case worker name
+Route::get('/advocate/all', 'AdvocateController@all');
+
 //request for searching caregivers
 Route::post('/custody/search', 'CustodyController@search');
 
@@ -42,6 +45,9 @@ Route::resource('child', 'ChildController');
 
 // case worker resource route
 Route::resource('caseworker','CaseworkerController');
+
+// advocate resource route
+Route::resource('advocate','AdvocateController');
 
 //school cotroller resource route
 Route::resource('school', 'SchoolController');
