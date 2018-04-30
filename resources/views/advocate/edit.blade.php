@@ -3,6 +3,13 @@
 <head>
 	<title></title>
 </head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <body>
 @if ($errors->any())
 <div class="alert alert-danger">
@@ -22,29 +29,50 @@
 	<form action="{{url('advocate', $advocate->id)}}" method="POST">
 		{{method_field('PATCH')}}
 		{{csrf_field()}}
-<h1>Advocate Information</h1>
-<label>first name</label>
-<input type="text" name="first name" value="{{$advocate->first_name}}">
+<legend> Advocate Information</legend>
 
-<label>last name</label>
-<input type="text" name="last name" value="{{$advocate->last_name}}">
 
-<label>phone</label>
-<input type="text" name="phone" value="{{$advocate->phone}}">
+		<div class="container">
 
-<label>address</label>
-<input type="text" name="address" value="{{$advocate->address}}">
+				<div class="row">
 
-<label>zip code</label>
-<input type="text" name="zip_code" value="{{$advocate->zip_code}}">
+						<div class="col-md-12 col-xs-12">
 
-<label>country</label>
-<input type="text" name="country" value="{{$advocate->country}}">
+							<label>first name</label>
+							<input type="text" class="form-control" name="first name" value="{{$advocate->first_name}}">
 
-<label>e-mail</label>
-<input type="text" name="email" value="{{$advocate->email}}">
+							<label>last name</label>
+							<input type="text" class="form-control" name="last name" value="{{$advocate->last_name}}">
 
-<button type="Submit">Update</button>
+							<label>phone</label>
+							<input type="text" class="form-control" name="phone" value="{{$advocate->phone}}">
+
+							<label>address</label>
+							<input type="text" class="form-control" name="address" value="{{$advocate->address}}">
+
+							<label>zip code</label>
+							<input type="text" class="form-control" name="zip_code" value="{{$advocate->zip_code}}">
+
+							<label>country</label>
+							<input type="text" class="form-control" name="country" value="{{$advocate->country}}">
+
+							<label>e-mail</label>
+							<input type="text" class="form-control" name="email" value="{{$advocate->email}}">
+
+							<button class="btn btn-primary" type="Submit">Update</button>
+
+
+						</div>
+
+
+				</div>
+
+
+		</div>
+
+
+
+
 </form>
 </body>
 </html>

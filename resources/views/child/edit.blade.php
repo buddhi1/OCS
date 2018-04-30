@@ -9,7 +9,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="{{url('/')}}/css/ChildrensInformation.css">
@@ -151,22 +151,59 @@
 
         </div>
 
-        <div>
-        	<label>Address</label>
-        	<input type="text" name="address1" value="{{$child->address1}}" >
+
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-xs-4 col-sm-4 col-md-6">
+
+                  <div>
+                    <label>Address</label>
+                    <input class="form-control" type="text" name="address1" value="{{$child->address1}}" >
+                  </div>
+                  <div>
+                    <label>City</label>
+                    <input class="form-control" type="text" name="city" value="{{$child->city}}" >
+                  </div>
+
+
+
+                </div>
+
+
+                <div class="col-xs-4 col-sm-4 col-md-6">
+
+
+                          <div>
+                            <label>Zip</label>
+                            <input class="form-control" type="text" name="zip" value="{{$child->zip}}" >
+                          </div>
+                          <div>
+                            <label>County</label>
+                            <input class="form-control" type="text" name="county" value="{{$child->county}}" >
+                          </div>
+
+                </div>
+
+
+
+            </div>
+
+
+
         </div>
-        <div>
-        	<label>City</label>
-        	<input type="text" name="city" value="{{$child->city}}" >
-        </div>
-        <div>
-        	<label>Zip</label>
-        	<input type="text" name="zip" value="{{$child->zip}}" >
-        </div>
-        <div>
-        	<label>County</label>
-        	<input type="text" name="county" value="{{$child->county}}" >
-        </div>
+
+
+
+
+
+
+
+
+
+
 
         <div class="container">
           <div class="row">
@@ -187,16 +224,16 @@
         loadAdvocateByName();
         loadSchoolsByName();
         loadCaseworkersByName();
-        document.getElementById('caseworker-list').style.display = 'none'; 
-        document.getElementById('school-list').style.display = 'none'; 
-        document.getElementById('advocate-list').style.display = 'none'; 
+        document.getElementById('caseworker-list').style.display = 'none';
+        document.getElementById('school-list').style.display = 'none';
+        document.getElementById('advocate-list').style.display = 'none';
       };
       document.getElementById("caseworker_id").addEventListener("focus", caseworkerDropDown);
       document.getElementById("caseworker_id").addEventListener("keyup", caseworkerDropDown);
       // document.getElementById("caseworker_id").addEventListener("focusout", caseworkerDropShrink);
-      document.getElementById("school_name").addEventListener("focus", schoolDropDown);      
+      document.getElementById("school_name").addEventListener("focus", schoolDropDown);
       document.getElementById("school_name").addEventListener("keyup", schoolDropDown);
-      document.getElementById("advocate_id").addEventListener("focus", advocateDropDown);      
+      document.getElementById("advocate_id").addEventListener("focus", advocateDropDown);
       document.getElementById("advocate_id").addEventListener("keyup", advocateDropDown);
 
       //datepicker
@@ -205,10 +242,10 @@
           changeMonth: true,
           changeYear: true
         });
-        $( "#datepicker" ).datepicker( "option", "showAnim", "slideDown" );        
+        $( "#datepicker" ).datepicker( "option", "showAnim", "slideDown" );
         $( "#datepicker" ).datepicker( "option", "dateFormat", "yy/mm/dd" );
       } );
-      
+
     </script>
   </body>
 </html>
