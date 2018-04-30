@@ -17,3 +17,29 @@ body{
    }
 
 }
+
+.caseworker-list{
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    height: auto;
+    position: absolute;
+    background-color: #d0cfcf;
+    width: 316px;
+    -webkit-transition: width 2s;
+    transition: width 2s;
+}
+
+.caseworker-list li{
+    display: block;
+    margin: 0px;    
+    padding: 4px;
+    border-bottom: 1px solid #c4b9b9;
+}
+
+
+.caseworker-list li:hover{
+    background-color: #e4dcdc;
+    cursor: pointer;
+}

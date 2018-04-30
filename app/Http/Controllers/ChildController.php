@@ -80,7 +80,6 @@ class ChildController extends Controller
     public function show($id)
     {
         //
-        dd("herreee");
     }
 
     /**

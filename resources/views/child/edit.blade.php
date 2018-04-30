@@ -92,31 +92,36 @@
                     </div> -->
                     <div class="form-group">
                       <label for="example-password-input" class="col-2 col-form-label">What is the name of child's caseworker?</label>
-                      <div class="col-10">
-                        <input class="form-control" type="text" value="{{$child->caseworker_id}}" id="example-password-input" name="caseworker_id">
+                      <div class="col-10" id="caseworker_div">
+                        <input class="form-control" type="text" value="" name="caseworker" id="caseworker_id">
+                        <input class="form-control" type="hidden" value="{{$child->caseworker_id}}" name="caseworker_id" id="caseworker">
+                        <ul class="caseworker-list" id="caseworker-list"></ul>
                       </div>
                     </div>
-                    <div class="form-group">{{$child->first_name}}
+                    <div class="form-group">
                       <label for="example-number-input" class="col-2 col-form-label">Who is the name of child's CASA advocate?</label>
                       <div class="col-10">
-                        <input class="form-control" type="text" value="{{$child->advocate_id}}" id="example-number-input" name="advocate_id">
+                        <input class="form-control" type="text" value="" name="advocate" id="advocate_id">
+                        <input class="form-control" type="hidden" value="{{$child->advocate_id}}" name="advocate_id" id="advocate">
+                        <ul class="advocate-list" id="advocate-list"></ul>
+
                       </div>
                     </div>
-{{$child->caseworker_id}}
-
                     <fieldset>
    <legend>School Info for school supplies?</legend>
    <div class='row'>
-       <div class='col-sm-4'>
+       <!-- <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_title">What is school district?</label>
                <input class="form-control" id="user_title" name="" size="30" type="text" />
            </div>
-       </div>
+       </div> -->
        <div class='col-sm-4'>
            <div class='form-group'>
-               <label for="user_firstname">What is the name of school?</label>
-               <input class="form-control" id="user_firstname" value="{{$child->school_id}}" name="school_id" size="30" type="text" />
+            <label for="user_firstname">What is the name of school?</label>
+            <input class="form-control" id="school_name" name="school_name" size="30" type="text" />
+            <input class="form-control" type="hidden" value="{{$child->school_id}}" name="school_id" id="school">
+            <ul class="caseworker-list" id="school-list"></ul>
            </div>
        </div>
        <div class='col-sm-4'>
@@ -167,5 +172,38 @@
           </div>
         </div>
     </form>
+    <script type="text/javascript">
+      var url = "{{url('/')}}";
+    </script>
+     <script type="text/javascript" src="{{url('/')}}/js/ajax.js"></script>
+    <script type="text/javascript" src="{{url('/')}}/js/general.js"></script>
+    <script type="text/javascript">
+
+      window.onload = function() {
+        loadSchoolsByName();
+        loadCaseworkersByName();
+        document.getElementById('caseworker-list').style.display = 'none'; 
+        document.getElementById('school-list').style.display = 'none'; 
+      };
+      document.getElementById("caseworker_id").addEventListener("focus", caseworkerDropDown);
+      document.getElementById("caseworker_id").addEventListener("keyup", caseworkerDropDown);
+      // document.getElementById("caseworker_id").addEventListener("focusout", caseworkerDropShrink);
+      document.getElementById("school_name").addEventListener("focus", schoolDropDown);      
+      document.getElementById("school_name").addEventListener("keyup", schoolDropDown);
+      document.getElementById("advocate_id").addEventListener("focus", loadAdvocateByName);      
+      document.getElementById("advocate_id").addEventListener("keyup", loadAdvocateByName);
+
+      //datepicker
+      $( function() {
+        $( "#datepicker" ).datepicker({
+          changeMonth: true,
+          changeYear: true
+        });
+        $( "#anim" ).on( "change", function() {
+          $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
+        });
+      } );
+      
+    </script>
   </body>
 </html>
