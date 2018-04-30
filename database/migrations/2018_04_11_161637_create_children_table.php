@@ -19,6 +19,7 @@ class CreateChildrenTable extends Migration
             $table->string('last_name');            
             $table->string('cps_no');
             $table->tinyInteger('type');
+            $table->tinyInteger('assign_status')->default(0);
             $table->integer('caseworker_id');
             $table->integer('advocate_id');
             $table->date('dob');

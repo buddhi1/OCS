@@ -29,7 +29,7 @@
 		<th>License Level</th>
 		<th>No of children has</th>
 		<th>Number of adoption limit</th>
-		<th>Appoint a child</th>
+		<th>Assign a child</th>
 	</tr>
 	@foreach($caregiver_results as $caregiver)
 	<tr>
@@ -44,14 +44,18 @@
 			 $caregiver->kinship_children_no}}</td>
 		<td>{{$caregiver->max_fosterchild_no}}</td>
 		<td>
-			<form action="" method="GET">
-				<button type="submit">Appoint</button>
+			<form action="{{url('custody/assign')}}" method="GET">
+				<input type="hidden" name="caregiver_id" value="{{$caregiver->id}}">
+				<input type="hidden" name="child_id" value="{{$child_id}}">
+				<button type="submit">Assign</button>
 			</form>
 		</td>
 	</tr>
 	@endforeach
 </table>
-{{ $caregiver_results->links() }}
+<div>
+	{{ $caregiver_results->links() }}
+</div>
  @endif
 </body>
 </html>

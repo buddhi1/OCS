@@ -19,9 +19,16 @@
 	  {{\Session::get('success')}}
 	</div>
   @endif
+
+@if(\Session::has('child_id'))
+<div class="alert alert-danger">
+	<h3>Children Information not found!!! Try again</h3>
+</div>
+@else
   
 <form action="{{url('/custody/search')}}" method="POST">
 	{{csrf_field()}}
+	<input type="hidden" name="child_id" value="{{$child_id}}">
 	<h1></h1>
 	<div>
 		<input type="text" name="search_name">
@@ -54,5 +61,6 @@
 		<button type="submit">Search</button>
 	</div>
 </form>
+@endif
 </body>
 </html>

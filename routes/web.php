@@ -31,6 +31,12 @@ Route::get('/advocate/all', 'AdvocateController@all');
 //request for searching caregivers
 Route::post('/custody/search', 'CustodyController@search');
 
+//request for assign caregivers
+Route::get('/custody/assign', 'CustodyController@assign');
+
+//request for remove custody 
+Route::get('/custody/remove', 'CustodyController@remove');
+
 // gift post route returning the CRUD view
 // Route::post('child/gift/add', 'GiftController@indexView');
 
@@ -57,3 +63,6 @@ Route::resource('agency', 'AgencyController');
 
 // custody controller resource route
 Route::resource('custody', 'CustodyController');
+
+// user controller resource route
+Route::resource('user', 'UserController');

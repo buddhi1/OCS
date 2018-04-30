@@ -44,9 +44,9 @@ class AdvocateController extends Controller
         //dd($request);
         $advocate = new Advocate();
         $data = $this->validate($request, [
-                            'first_name'=>'required', 
+                            'first_name'=>'required',
                             'last_name'=>'required',
-                            'email'=>'required',                            
+                            'email'=>'required',
                             'phone'=>'bail|required|max:10',
                             'address'=>'required',
                             'zip_code'=>'required',
@@ -86,7 +86,7 @@ class AdvocateController extends Controller
     {
         //
         if($id) {
-            $advocate = DB::table('caseworkers')->where('id', $id)->first();
+            $advocate = DB::table('advocates')->where('id', $id)->first();
             if ($advocate) {
                 return view('advocate.edit')
                         ->with('advocate', $advocate);
@@ -113,9 +113,9 @@ class AdvocateController extends Controller
             $advocate = Advocate::find($id);
             if ($advocate) {
         $data = $this->validate($request, [
-                            'first_name'=>'required', 
+                            'first_name'=>'required',
                             'last_name'=>'required',
-                            'email'=>'required',                            
+                            'email'=>'required',
                             'phone'=>'bail|required|max:10',
                             'address'=>'required',
                             'zip_code'=>'required',
@@ -164,21 +164,21 @@ class AdvocateController extends Controller
             return redirect('/advocate')
                     ->with('error', 'Invalid advocate information. Try again');
         }
-        
+
     }
 
     //retruns all names of the caseworkers
-    public function all(Request $request) 
+    public function all(Request $request)
     {
         if ($request) {
             $name = $request['name'];
             $advocates = DB::table('advocates')
                         ->select('id', 'first_name', 'last_name')
-                        ->where('last_name', 'like', $name.'%')                        
+                        ->where('last_name', 'like', $name.'%')
                         // ->where('first_name', 'like', $name.'%')
-                        ->get();    
+                        ->get();
             return json_encode($advocates);
         }
-        
+
     }
 }

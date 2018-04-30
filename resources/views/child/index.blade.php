@@ -40,10 +40,6 @@
       {{\Session::get('success')}}
   </div>
  @endif
-
-
-
-
 <div class="container">
 
 	<div class="row">
@@ -84,7 +80,7 @@
 									<form  action="{{url('child/gift')}}" method="GET">
 
 										<input type="hidden" name="child_id" value="{{ $child->id }}">
-										<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-success btn-xs" data-title="Add" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-plus"></span></button></p></td>
+										<td><p data-placement="top" data-toggle="tooltip" title="Add"><button class="btn btn-success btn-xs" data-title="Add" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-plus"></span></button></p></td>
 									</form>
 								</td>
 								<td>
@@ -104,23 +100,9 @@
 						</table>
 						{{ $children->links() }}
 					@endif
-
-
-
-
 					</div>
-
-
-
 			</div>
-
 	</div>
-
-
 </div>
-
-
-
-
 </body>
 </html>
