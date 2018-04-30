@@ -26,7 +26,7 @@
 	    {{method_field('PATCH')}}
 	    {{ csrf_field() }}
 		<input type="text" name="item" value="{{$gift->item}}">
-		<input type="hidden" name="child_id" value="{{$child_id}}">
+		<input type="hidden" name="child_id" value="{{$gift->child_id}}">
 		<select name="type">
 			<option value="0" @if($gift->type == 0) selected @endif>Gift</option>
 			<option value="1" @if($gift->type == 1) selected @endif>School item</option>

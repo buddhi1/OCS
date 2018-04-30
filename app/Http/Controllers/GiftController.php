@@ -15,10 +15,18 @@ class GiftController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        if ($request) {
+    {   
+        // dd($request->session()->get('child_id'));     
+        if ($request || $request->session()->get('child_id')) {
+            if ($request['child_id']) {
+                $child_id = $request['child_id'];
+            } else {
+                $child_id = $request->session()->get('child_id');
+            }
+            
+
             $child = DB::table('children')
-                        ->where('id', '=', $request['child_id'])
+                        ->where('id', '=', $child_id)
                         ->first();
 
             if ($child) {
@@ -63,23 +71,27 @@ class GiftController extends Controller
                     'item'=>'required',
                     'type'=>'required'
                 ]);
-            $child = DB::table('children')->where('id', '=', $data['child_id'])->first();
+            if ($request['child_id']) {
+                $child_id = $request['child_id'];
+            } else {
+                $child_id = $request->session()->get('child_id');
+            }
+            $child = DB::table('children')->where('id', '=', $child_id)->first();
             if ($child) {
-                $gift->child_id = $data['child_id'];
                 $gift->item = $data['item'];
                 $gift->type = $data['type'];
                 $gift->save();
-
+               
                 return redirect('/child/gift')
                         ->with('success', 'New item added successfully!')
-                        ->with('child_id', $gift->child_id);
+                        ->with('child_id', $child->id);
             } else {
-                return redirect('/child')
+                return redirect('/child/gift')
                         ->with('error', 'Something went wrong. Please try again');
             }
             
         } else {
-            return redirect('/child')
+            return redirect('/child/gift')
                     ->with('error', 'Something went wrong. Please try again');
         }
         
@@ -144,7 +156,8 @@ class GiftController extends Controller
                     $gift->save();
 
                     return redirect('/child/gift')
-                                ->with('success', 'Information updated successfully!!!');
+                                ->with('success', 'Information updated successfully!!!')
+                                ->with('child_id', $child->id);
                 } else {
                     return redirect('/child/gift')
                             ->with('error', 'Something went wrong. Please try again');
@@ -173,7 +186,8 @@ class GiftController extends Controller
                 $gift->delete();
 
                 return redirect('/child/gift')
-                        ->with('success', 'Item deleted successfully');
+                        ->with('success', 'Item deleted successfully')
+                        ->with('child_id', $gift->child_id);
             } else {
                 return redirect('/child/gift')
                         ->with('error', 'Item not found. Try again');
