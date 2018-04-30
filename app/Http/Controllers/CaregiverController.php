@@ -40,6 +40,7 @@ class CaregiverController extends Controller
     public function store(Request $request)
     {
         $caregiver = new Caregiver();
+        // $data2 = App\Uservalidate($request, ['email'=>'bail|required|unique']);
         $data = $this->validate($request, [  'first_name'=>'required',
                                              'last_name'=>'required',
                                              'address'=>'required',

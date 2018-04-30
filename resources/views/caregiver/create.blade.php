@@ -48,6 +48,12 @@
                       </div>
                     </div>
                     <div class="form-group">
+                      <label for="example-text-input" class="col-2 col-form-label">What is your Email?</label>
+                      <div class="col-12">
+                        <input class="form-control" type="email" value=""  id="example-text-input"  name="email">
+                      </div>
+                    </div>
+                    <div class="form-group">
                       <label for="example-search-input" class="col-2 col-form-label">What is your adress?</label>
                       <div class="col-12">
                         <input class="form-control" type="text" value="" id="example-search-input" name="address">

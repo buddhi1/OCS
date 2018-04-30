@@ -29,6 +29,7 @@
 			<th>Gifts</th>
 			<th>Edit</th>
 			<th>Delete</th>
+			<th>Care Status</th>
 		</tr>
 		@foreach($children as $child)
 		<tr>
@@ -52,20 +53,33 @@
 				<form  action="{{url('child/gift')}}" method="GET">
 					
 					<input type="hidden" name="child_id" value="{{ $child->id }}">
-					<button>Add</button>
+					<button type="submit">Add</button>
 				</form>
 			</td>
 			<td>
 				<form  action="{{url('child', [$child->id])}}/edit">
-					<button>Edit</button>
+					<button type="submit">Edit</button>
 				</form>
 			</td>
 			<td>
 				<form action="{{url('child', [$child->id])}}" method="POST">
    					{{method_field('DELETE')}}
 					{{ csrf_field() }}
-					<button>Delete</button>
+					<button type="submit">Delete</button>
 				</form>
+			</td>
+			<td>				
+				@if($child->assign_status == 1)
+					<form action="{{url('custody/remove')}}" method="GET">
+						<input type="hidden" name="child_id" value="{{$child->id}}">					
+						<button>Remove</button>
+					</form>
+				@else
+					<form action="{{url('custody/create')}}" method="GET">
+						<input type="hidden" name="child_id" value="{{$child->id}}">					
+						<button>Assign</button>
+					</form>
+				@endif					
 			</td>
 		</tr>
 		@endforeach
