@@ -123,7 +123,7 @@ var schoolDropDown = function() {
 }
 
 //dropdown expand
-var loadAdvocateByName = function() {
+var advocateDropDown = function() {
     document.getElementById('advocate-list').style.display = 'block'; 
-	loadCaseworkersByName();	
+	loadAdvocateByName();	
 }
