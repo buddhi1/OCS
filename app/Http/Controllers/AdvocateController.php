@@ -86,7 +86,7 @@ class AdvocateController extends Controller
     {
         //
         if($id) {
-            $advocate = DB::table('caseworkers')->where('id', $id)->first();
+            $advocate = DB::table('advocates')->where('id', $id)->first();
             if ($advocate) {
                 return view('advocate.edit')
                         ->with('advocate', $advocate);
