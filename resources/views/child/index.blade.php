@@ -57,6 +57,7 @@
 								<th>Gifts</th>
 								<th>Edit</th>
 								<th>Delete</th>
+								<th>Care Status</th>
 							</tr>
 							@foreach($children as $child)
 							<tr>
@@ -94,6 +95,19 @@
 										{{ csrf_field() }}
 										<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
 									</form>
+								</td>
+								<td>				
+									@if($child->assign_status == 1)
+										<form action="{{url('custody/remove')}}" method="GET">
+											<input type="hidden" name="child_id" value="{{$child->id}}">					
+											<button>Remove</button>
+										</form>
+									@else
+										<form action="{{url('custody/create')}}" method="GET">
+											<input type="hidden" name="child_id" value="{{$child->id}}">					
+											<button>Assign</button>
+										</form>
+									@endif					
 								</td>
 							</tr>
 							@endforeach
