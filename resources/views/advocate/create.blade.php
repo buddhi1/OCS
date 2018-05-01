@@ -48,7 +48,7 @@
 		                      </div>
 		                    </div>
 		                    <div class="form-group">
-		                      <label for="example-email-input" class="col-2 col-form-label">What is your phone number?</label>
+			                      <label for="example-email-input" class="col-2 col-form-label">What is your phone number?</label>
 		                      <div class="col-10">
 		                        <input class="form-control" type="number" value="" id="example-email-input" name="phone">
 		                      </div>

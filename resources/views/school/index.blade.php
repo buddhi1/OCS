@@ -14,11 +14,11 @@
 <style media="screen">
 
 	.btn-primary{
-		margin-left: -130px;
+		margin-left: -160px;
 	}
 
 	.btn-danger{
-		margin-left: -237px;
+		margin-left: -280px;
 	}
 
 </style>
