@@ -19,50 +19,58 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//ajax request for loading all school name
-Route::get('/school/all', 'SchoolController@all');
 
-//ajax request for loading all case worker name
-Route::get('/caseworker/all', 'CaseworkerController@all');
+//route for admin
+Route::group(['middleware' => 'App\Http\Middleware\AuthMiddleware'], function () {
 
-//ajax request for loading all case worker name
-Route::get('/advocate/all', 'AdvocateController@all');
+	
+	// gift controller resource route
+	Route::resource('child/gift', 'GiftController');
+	
 
-//request for searching caregivers
-Route::post('/custody/search', 'CustodyController@search');
+	//route for admin
+	Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
+		// user controller resource route
+		Route::resource('user', 'UserController');
 
-//request for assign caregivers
-Route::get('/custody/assign', 'CustodyController@assign');
+		//ajax request for loading all school name
+		Route::get('/school/all', 'SchoolController@all');
 
-//request for remove custody 
-Route::get('/custody/remove', 'CustodyController@remove');
+		//ajax request for loading all case worker name
+		Route::get('/caseworker/all', 'CaseworkerController@all');
 
-// gift post route returning the CRUD view
-// Route::post('child/gift/add', 'GiftController@indexView');
+		//ajax request for loading all case worker name
+		Route::get('/advocate/all', 'AdvocateController@all');
 
-// gift controller resource route
-Route::resource('child/gift', 'GiftController');
+		//request for searching caregivers
+		Route::post('/custody/search', 'CustodyController@search');
 
-//Caregiver controller resource route
-Route::resource('/caregiver', 'CaregiverController');
+		//request for assign caregivers
+		Route::get('/custody/assign', 'CustodyController@assign');
 
-//child cotroller resource route
-Route::resource('child', 'ChildController');
+		//request for remove custody 
+		Route::get('/custody/remove', 'CustodyController@remove');
 
-// case worker resource route
-Route::resource('caseworker','CaseworkerController');
+		//school cotroller resource route
+		Route::resource('school', 'SchoolController');
+		
+		//Caregiver controller resource route
+		Route::resource('/caregiver', 'CaregiverController');
 
-// advocate resource route
-Route::resource('advocate','AdvocateController');
+		//child cotroller resource route
+		Route::resource('child', 'ChildController');
 
-//school cotroller resource route
-Route::resource('school', 'SchoolController');
+		// case worker resource route
+		Route::resource('caseworker','CaseworkerController');
 
-// agency controller resource route
-Route::resource('agency', 'AgencyController');
+		// advocate resource route
+		Route::resource('advocate','AdvocateController');
 
-// custody controller resource route
-Route::resource('custody', 'CustodyController');
+		// agency controller resource route
+		Route::resource('agency', 'AgencyController');
 
-// user controller resource route
-Route::resource('user', 'UserController');
+		// custody controller resource route
+		Route::resource('custody', 'CustodyController');
+	});
+
+});
