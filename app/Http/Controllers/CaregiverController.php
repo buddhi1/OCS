@@ -65,7 +65,7 @@ class CaregiverController extends Controller
                                             ]);
 
         $user->email = $data2['email'];
-        $user->password = App\Hash::make($data2['password']);
+        $user->password = bcrypt($data2['password']);
         $user->name = $data['first_name'];
         
 
