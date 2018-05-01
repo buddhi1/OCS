@@ -28,7 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        //Return users view
+        return view('user.create');
     }
 
     /**
@@ -39,7 +40,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+
+        $data = $this->validate($request, [  'name'=>'required',                                            
+                                             'email'=>'bail|required|unique:users,email',
+                                             'password'=>'required|min:6',
+                                             'confirm_password'=>'required'
+                                            ]);
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->type = 1;
+        $user->password = bcrypt($data['password']);
+        $user->save();
+        return redirect('/user') -> with('success', 'User added successfully');
     }
 
     /**
