@@ -29,6 +29,7 @@ class CreateChildrenTable extends Migration
             $table->string('city');
             $table->string('zip');
             $table->string('county');
+            $table->integer('sibling')->default(0);
             $table->timestamps();
         });
     }
