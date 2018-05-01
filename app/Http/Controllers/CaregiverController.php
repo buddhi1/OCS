@@ -202,8 +202,10 @@ class CaregiverController extends Controller
     {
         if($id){
             $caregiver = Caregiver::find($id);
-            if ($caregiver) {
+            $user = User::find($caregiver->user_id);
+            if ($caregiver && $user) {
                 $caregiver->delete();
+                $user->delete();
                 return redirect('/caregiver')
                         ->with('success', 'Caregiver information deleted successfully');
             } else {

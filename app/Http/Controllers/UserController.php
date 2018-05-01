@@ -61,7 +61,19 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        if($id) {
+            $user = DB::table('users')->select('id', 'email')->where('id', $id)->first();
+            if ($user) {
+                return view('user.edit')
+                        ->with('user', $user);
+            } else {
+                return redirect('/user')
+                        ->with('error', 'User information not found. Try again');
+            }
+        } else {
+            return redirect('/user')
+                    ->with('error', 'Invalid user information. Try again');
+        }
     }
 
     /**
@@ -73,7 +85,31 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($id) {
+            $user = User::find($id);
+            if ($user) {
+                if ($request['new_password'] != "" && $request['confirm_password'] != "" ) {
+                    if ($request['new_password'] == $request['confirm_password']) {
+                        $user->password = bcrypt($request['new_password']);
+                        $user->save();
+                        return redirect('/user')
+                                ->with('success', 'Password updated successfully!!!');
+                    } else {
+                        return redirect('/user')
+                                        ->with('error', 'Password verification failed. Try again');
+                    }
+                } else {
+                    return redirect('/user');
+                }            
+            
+            } else {
+                return redirect('/user')
+                        ->with('error', 'Invalid user information. Try again');
+            } 
+        } else {
+            return redirect('/user')
+                    ->with('error', 'Invalid user information. Try again');
+        }
     }
 
     /**
@@ -84,6 +120,24 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if($id){
+            $user = User::find($id);
+            if ($user) {
+                $caregiver = DB::table('caregivers')->where('user_id', '=', $id)->first();
+                if ($caregiver) {
+                    return redirect('/user')
+                        ->with('error', 'This is a Care Giver account. Use care givers tab to delete account');
+                }
+                $user->delete();
+                return redirect('/user')
+                        ->with('success', 'User information deleted successfully');
+            } else {
+                return redirect('/user')
+                        ->with('error', 'User information not found. Try again');
+            }
+        } else {
+            return redirect('/user')
+                    ->with('error', 'Invalid user information. Try again');
+        }
     }
 }
