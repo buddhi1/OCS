@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<style media="screen">
@@ -20,7 +20,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<body>
+<body> -->
+@extends('layouts.admin')
+
+@section('content')		
 @if(\Session::has('caseworkers'))
 	<div class="alert alert-danger">
 		<h3>Case worker Information not found!!! Try again</h3>
@@ -103,6 +106,6 @@
 		{{ $caseworkers->links() }}
 	</div>
 </div>
-
-</body>
-</html>
+@endsection
+<!-- </body>
+</html> -->

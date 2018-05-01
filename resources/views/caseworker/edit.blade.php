@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
@@ -9,7 +9,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<body>
+<body> -->
+@extends('layouts.admin')
+
+@section('content')		
 @if ($errors->any())
 <div class="alert alert-danger">
 	<ul>
@@ -52,5 +55,6 @@
 
 <button type="Submit">Update</button>
 </form>
-</body>
-</html>
+@endsection
+<!-- </body>
+</html> -->

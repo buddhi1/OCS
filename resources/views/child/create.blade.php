@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -24,8 +24,11 @@
 
     <link rel="stylesheet" href="{{url('/')}}/css/ChildrensInformation.css">
   </head>
-  <body>
-	@if ($errors->any())
+  <body> -->
+@extends('layouts.admin')
+
+@section('content') 
+  @if ($errors->any())
 		<div class="alert alert-danger">
 			<ul>
 			@foreach ($errors->all() as $error)
@@ -222,12 +225,15 @@
       $( function() {
         $( "#datepicker" ).datepicker({
           changeMonth: true,
-          changeYear: true
+          changeYear: true,
+          yearRange: "1990:2020"
         });
         $( "#datepicker" ).datepicker( "option", "showAnim", "slideDown" );
         $( "#datepicker" ).datepicker( "option", "dateFormat", "yy/mm/dd" );
       } );
 
     </script>
-  </body>
-</html>
+
+@endsection
+<!--   </body>
+</html> -->
