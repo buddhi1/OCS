@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -10,8 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="CaregiverInfo.css">
   </head>
-  <body>
+  <body> -->
+  @extends('layouts.admin')
 
+  @section('content')
   @if ($errors->any())
     <div class="alert alert-danger">
       <ul>
@@ -153,6 +155,6 @@
           </div>
         </div>
   </form>
-
-  </body>
-</html>
+@endsection
+  <!-- </body>
+</html> -->

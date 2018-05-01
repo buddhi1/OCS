@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -10,8 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="CaregiverInfo.css">
   </head>
-  <body>
-
+  <body> -->
+  @extends('layouts.admin')
+  
+  @section('content')  
   @if ($errors->any())
     <div class="alert alert-danger">
       <ul>
@@ -48,7 +50,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="example-text-input" class="col-2 col-form-label">What is your Email?</label>
+                      <label for="example-text-input" class="col-2 col-form-label">What is your e-mail?</label>
                       <div class="col-12">
                         <input class="form-control" type="email" value=""  id="example-text-input"  name="email">
                       </div>
@@ -114,7 +116,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="example-number-input" class="col-2 col-form-label">What is the number of max foster child you can adopt?</label>
+                      <label for="example-number-input" class="col-2 col-form-label">What is the number of maximum foster child you can adopt?</label>
                       <div class="col-10">
                         <input class="form-control" type="text" value="" id="example-number-input" name="max_fosterchild_no">
                       </div>
@@ -164,6 +166,6 @@
           </div>
         </div>
   </form>
-
-  </body>
-</html>
+  @endsection
+  <!-- </body>
+</html> -->

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
@@ -9,7 +9,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body>
+<body> -->
+@extends('layouts.admin')
+
+@section('content')  
 @if ($errors->any())
 <div class="alert alert-danger">
 	<ul>
@@ -35,7 +38,7 @@
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
                     <div class="form-group">
-                      <label for="example-text-input" class="col-2 col-form-label">What is your first name??</label>
+                      <label for="example-text-input" class="col-2 col-form-label">What is your first name?</label>
                       <div class="col-12">
                         <input class="form-control" type="text" value=""  id="example-text-input"  name="first name" required >
                       </div>
@@ -65,13 +68,13 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="example-password-input" class="col-2 col-form-label">Which country</label>
+                      <label for="example-password-input" class="col-2 col-form-label">Which county?</label>
                       <div class="col-10">
                         <input class="form-control" type="text" value="" id="example-password-input" name="country">
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="example-number-input" class="col-2 col-form-label">What is your email?</label>
+                      <label for="example-number-input" class="col-2 col-form-label">What is your e-@mail?</label>
                       <div class="col-10">
                         <input class="form-control" type="email" value="" id="example-number-input" name="email">
                       </div>
@@ -108,5 +111,6 @@
 
 <!-- <button type="Submit">Submit</button> -->
 </form>
-</body>
-</html>
+@endsection
+<!-- </body>
+</html> -->

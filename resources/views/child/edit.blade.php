@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -14,7 +14,10 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="{{url('/')}}/css/ChildrensInformation.css">
   </head>
-  <body>
+  <body> -->
+  @extends('layouts.admin')
+
+  @section('content') 
 	@if ($errors->any())
 		<div class="alert alert-danger">
 			<ul>
@@ -247,5 +250,6 @@
       } );
 
     </script>
-  </body>
-</html>
+    @endsection
+  <!-- </body>
+</html> -->

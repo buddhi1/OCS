@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title>Search Results</title>
 </head>
-<body>
+<body> -->
+@extends('layouts.admin')
+
+@section('content')	
 @if(\Session::has('caregiver_results'))
 	<div class="alert alert-danger">
 		<h3>Desired information is not found please try again!</h3>
@@ -57,5 +60,6 @@
 	{{ $caregiver_results->links() }}
 </div>
  @endif
-</body>
-</html>
+ @endsection
+<!-- </body>
+</html> -->

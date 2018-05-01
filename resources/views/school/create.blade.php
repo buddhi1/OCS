@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title>Add School</title>
@@ -12,7 +12,10 @@
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<body>
+<body> -->
+@extends('layouts.admin')
+
+@section('content')	
 @if ($errors->any())
 	<div class="alert alert-danger">
 		<ul>
@@ -55,5 +58,7 @@
 	</div>
 
 </form>
-</body>
+@endsection
+<!-- </body>
 </html>
+ -->
