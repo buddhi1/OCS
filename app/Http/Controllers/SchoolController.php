@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 use App\School;
 
 class SchoolController extends Controller
@@ -99,7 +100,7 @@ class SchoolController extends Controller
             $school = School::find($id);
             if ($school) {
                 $data = $this->validate($request, [
-                                        'name'=>'bail|required|unique:schools,name',
+                                        'name'=>'bail|required',Rule::unique('schools')->ignore($id, 'id'),
                                         'district'=>'required'    
                                         ]);
                 $school->name = $data['name'];

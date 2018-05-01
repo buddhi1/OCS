@@ -44,7 +44,7 @@ class CaregiverController extends Controller
         $user = new User();
         
         $data2 = $this->validate($request, ['email'=>'bail|required|unique:users,email',
-                                            'password'=>'required|min:8'
+                                            'password'=>'required|min:6'
                                             ]);
         $data = $this->validate($request, [  'first_name'=>'required',
                                              'last_name'=>'required',
