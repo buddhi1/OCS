@@ -152,7 +152,7 @@
        <!-- <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_lastname">Foster/Adoptive Placement</label>
-               <input class="form-control" value="{{ $caregiver->foster_children_no }}" id="user_lastname" name="foster_children_no" size="30" type="text" />
+               <input class="form-control" value="" id="user_lastname" name="foster_children_no" size="30" type="text" />
            </div>
 
 
