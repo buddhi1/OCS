@@ -1,16 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Caregiver Information</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="CaregiverInfo.css">
-  </head>
-  <body> -->
   @extends('layouts.admin')
   
   @section('content')  
@@ -32,9 +20,9 @@
 
   <form action="{{url('/caregiver')}}" method="POST">
     {{ csrf_field() }}      
-        <div class="container">
+        <div class="container-flex">
           <legend>Caregiver Information</legend>  
-          <div class="row">
+          <div>
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
                     <div class="form-group">
@@ -99,8 +87,12 @@
                     </div>
                     <div class="form-group">
                       <label for="example-number-input" class="col-2 col-form-label">What is the type of your license?</label>
-                      <div class="col-10">
-                        <input class="form-control" type="text" value="" id="example-number-input" name="license_type">
+                      <select name="license_type" class="form-control">
+                        <option value="1">Care Giver</option>
+                        <option value="2">Kinship</option>
+                      </select>
+                      <!-- <div class="col-10">
+                        <input class="form-control" type="text" value="" id="example-number-input" name="license_type"> -->
                       </div>
                     </div>
                     <div class="form-group">
@@ -112,13 +104,21 @@
                     <div class="form-group">
                       <label for="example-number-input" class="col-2 col-form-label">What level of care are you licenced for?</label>
                       <div class="col-10">
-                        <input class="form-control" type="text" value="" id="example-number-input" name="license_level">
+                        <select name="license_level" class="form-control">
+                          <option value="1">Level 1</option>
+                          <option value="2">Level 2</option>
+                          <option value="3">Level 3</option>
+                          <option value="4">Level 4</option>
+                          <option value="5">Level 5</option>
+                          <option value="6">Level 6</option>
+                        </select>
+                        <!-- <input class="form-control" type="text" value="" id="example-number-input" name="license_level"> -->
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="example-number-input" class="col-2 col-form-label">What is the number of maximum foster child you can adopt?</label>
                       <div class="col-10">
-                        <input class="form-control" type="text" value="" id="example-number-input" name="max_fosterchild_no">
+                        <input class="form-control" type="number" value="" id="example-number-input" name="max_fosterchild_no">
                       </div>
                     </div>
                     <div class="form-group">
@@ -134,38 +134,36 @@
                     </div>
                     <fieldset>
    <legend>How many Children do you have?</legend>
-   <div class='row'>
+   <div>
        <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_title">Biological children</label>
-               <input class="form-control" id="user_title" name="bio_children_no" size="30" type="text" />
+               <input class="form-control" id="user_title" name="bio_children_no" size="30" type="number" />
            </div>
        </div>
        <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_firstname">Kinship children</label>
-               <input class="form-control" id="user_firstname" name="kinship_children_no" size="30" type="text" />
+               <input class="form-control" id="user_firstname" name="kinship_children_no" size="30" type="number" />
            </div>
        </div>
-       <div class='col-sm-4'>
+      <!--  <div class='col-sm-4'>
            <div class='form-group'>
-               <label for="user_lastname">Foster/Adoptive Placement</label>
-               <input class="form-control" id="user_lastname" name="foster_children_no" size="30" type="text" />
+               <label for="user_lastname">Foster children</label>
+               <input class="form-control" id="user_lastname" name="foster_children_no" size="30" type="number" />
            </div>
 
 
-       </div>
+       </div> -->
    </div>
 
 </fieldset>
-        <div class="container">
-          <div class="row">
+        <!-- <div class="container"> -->
+          <div>
             <div class="col-xs-4 col-sm-4 col-md-6">
-          <button class="btn btn-primary btn-sx" type="submit">Submit</button>
+          <button class="btn btn-primary btn-sx" type="submit">Save</button>
         </div>
           </div>
-        </div>
+        <!-- </div> -->
   </form>
   @endsection
-  <!-- </body>
-</html> -->

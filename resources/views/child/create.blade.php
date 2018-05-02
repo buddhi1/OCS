@@ -1,30 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
-
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-               integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-               crossorigin="anonymous">
-    </script>
-    <title>Caregiver Information</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <link rel="stylesheet" href="{{url('/')}}/css/ChildrensInformation.css">
-  </head>
-  <body> -->
 @extends('layouts.admin')
 
 @section('content') 
@@ -46,9 +20,9 @@
 
   <form action="{{url('/child')}}" method="POST">
     {{ csrf_field() }}
-        <div class="container">
+        <div class="container-flex">
           <legend>Children Information</legend>
-          <div class="row">
+          <div>
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
                     <div class="form-group">
@@ -128,8 +102,7 @@
                     <fieldset>
    <legend>School Info for school supplies?</legend>
 
-   <div class='row'>
-
+   <div>
        <div class='col-sm-4'>
            <div class='form-group'>
             <label for="user_firstname">What is the name of school?</label>
@@ -143,44 +116,26 @@
                <label for="user_lastname">Grade?</label>
                <input class="form-control" id="user_lastname" name="class" size="30" type="text" />
            </div>
-
-
        </div>
    </div>
-
 </fieldset>
-
-
-
-                </div>
-
-
-
-
-          </div>
-
-        </div>
-
-  <div class="container">
-
-    <div class="row">
-
-        <div class="col-xs-4 col-sm-4 col-md-6">
-          <div>
+ <div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+          <div class='form-group'>
             <label>Address</label>
             <input class="form-control" type="text" name="address1">
           </div>
-          <div>
+          <div class='form-group'>
             <label>City</label>
             <input class="form-control" type="text" name="city">
           </div>
           </div>
-            <div class="col-xs-4 col-sm-4 col-md-6">
-          <div>
+          <div class="col-xs-4 col-sm-4 col-md-4">
+          <div class='form-group'>
             <label>Zip</label>
             <input class="form-control" type="text" name="zip">
           </div>
-          <div>
+          <div class='form-group'>
             <label>County</label>
             <input class="form-control" type="text" name="county">
           </div>
@@ -188,16 +143,39 @@
         </div>
     </div>
 
-  </div>
-
-        <div class="container">
-          <div class="row">
+    <div>
             <div class="col-xs-4 col-sm-4 col-md-6">
           <button class="btn btn-primary btn-sx" type="submit">Submit</button>
         </div>
           </div>
-        </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              
+
+
+
+          
+
+  
+
+  <!-- <div class="container"> -->
+
+   
+  <!-- </div> -->
+
+        <!-- <div class="container"> -->
+          
+        <!-- </div> -->
     </form>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
       var url = "{{url('/')}}";
     </script>
@@ -235,5 +213,4 @@
     </script>
 
 @endsection
-<!--   </body>
-</html> -->
+

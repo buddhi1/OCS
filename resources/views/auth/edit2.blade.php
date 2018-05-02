@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.caregiver')
 
 @section('content')
 <h1>Change Password</h1>

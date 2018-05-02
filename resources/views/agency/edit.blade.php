@@ -35,10 +35,10 @@
 
 
 
-<div class="container">
+<div class="container-flex">
 
 
-          <div class="row">
+          <div>
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
                     <div class="form-group">
@@ -84,13 +84,13 @@
                       </div>
                     </div>
 
-										<div class="container">
-          <div class="row">
+										<!-- <div class="container"> -->
+          <div>
             <div class="col-xs-4 col-sm-4 col-md-6">
           <button class="btn btn-primary btn-sx" type="Submıt">Submit</button>
         </div>
           </div>
-        </div>
+        <!-- </div> -->
 
 
 

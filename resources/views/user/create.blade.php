@@ -20,8 +20,8 @@
 <form action="{{url('/user')}}" method="POST">
 	{{csrf_field()}}
 
-	<div class="container">
-		<div class="row">
+	<div class="container-flex">
+		<div>
 
 				<div class="col-md-12 col-xs-6">
 					<legend> Add Users</legend>
@@ -42,7 +42,7 @@
 						<input class="form-control" type="password" name="confirm_password">
 					</div>
 					<div>
-						<button class="btn btn-primary"type="submit">Add</button>
+						<button class="btn btn-primary"type="submit">Save</button>
 					</div>
 				</div>
 

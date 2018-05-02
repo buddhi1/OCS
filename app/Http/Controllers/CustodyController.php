@@ -108,6 +108,7 @@ class CustodyController extends Controller
                 $address = DB::table('caregivers')
                             ->where('zipcode', 'like', '%'.$search_name.'%')
                             ->where('license_level', '>=', $license_level ) 
+                            ->where('license_type', '=', 1)
                             ->whereRaw('current_children_no < max_fosterchild_no')  
                             ->paginate(10);
             } elseif ($request['address'] == 2) 
@@ -115,6 +116,7 @@ class CustodyController extends Controller
                 $address = DB::table('caregivers') 
                             ->where('county', 'like', '%'.$search_name.'%')
                             ->where('license_level', '>=', $license_level ) 
+                            ->where('license_type', '=', 1)
                             ->whereRaw('current_children_no < max_fosterchild_no') 
                             ->paginate(10);  
             } 

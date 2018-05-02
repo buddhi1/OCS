@@ -1,16 +1,3 @@
- <!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>Custody</title>
-</head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag --------
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-<body> --> -->
 @extends('layouts.admin')
 
 @section('content')
@@ -41,12 +28,12 @@
 	<input type="hidden" name="child_id" value="{{$child_id}}">
 
 
-		<div class="container">
-				<div class="row">
+		<div class="container-flex">
+				<div>
 						<div class="col-md-6">
 								<legend>Custody</legend>
 								<div>
-									<input  class="form-control" type="text" name="search_name">
+									<input  class="form-control" type="text" name="search_name" placeholder="Search">
 								</div>
 										 <div class="form-group">
 											 <label for="form-check-label" class="col-2 col-form-label">Please check the buttons you want to search with</label>
@@ -61,12 +48,12 @@
 									 </div>
 									 <div>
 										<label>Level of license</label>
-										<select name="license_level">
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
+										<select name="license_level" class="form-control">
+											<option value="1">Level 1</option>
+											<option value="2">Level 2</option>
+											<option value="3">Level 3</option>
+											<option value="4">Level 4</option>
+											<option value="5">Level 5</option>
 										</select>
 									 </div>
 												</div>
@@ -83,5 +70,4 @@
 </form>
 @endif
 @endsection
-<!-- </body>
-</html> -->
+

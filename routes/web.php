@@ -12,24 +12,47 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-//route for admin
+//route group for caregiver
+Route::group(['middleware' => 'App\Http\Middleware\CaregiverMiddleware'], function () {
+	Route::get('care_giver/changepassword', function () {
+	    return view('auth.edit2');
+	});
+
+	//caregiver home page
+	Route::get('/care_giver', 'CaregiverController@home');
+
+	//all childer assigned for the caegiver
+	Route::get('/care_giver/children', 'ChildController@assigned');
+});
+
+//route group for logged in
 Route::group(['middleware' => 'App\Http\Middleware\AuthMiddleware'], function () {
 
+	//change password by individual
+	Route::post('user/changepassword', 'UserController@changePsw');
 	
 	// gift controller resource route
 	Route::resource('child/gift', 'GiftController');
 	
 
-	//route for admin
+	//route group for admin
 	Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function () {
+
+		//admin home page
+		Route::get('/admin', 'UserController@home');
+
+		Route::get('user/changepassword', function () {
+		    return view('auth.edit');
+		});
 		// user controller resource route
 		Route::resource('user', 'UserController');
 

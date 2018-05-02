@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+@extends('layouts.admin')
+
+@section('content')	
 @if(\Session::has('users'))
 	<div class="alert alert-danger">
 		<h3>Users Information not found!!! Try again</h3>
@@ -20,7 +17,7 @@
   </div>
  @endif
 
- <table border="1">
+ <table class="table table-striped">
  	<tr>
  		<th>ID</th>
  		<th>Name</th>
@@ -35,19 +32,21 @@
  		<td>{{$user->email}}</td>
  		<td>
 			<form action="{{url('user', [$user->id])}}/edit" method="GET">
-				<button type="submit">Reset Password</button>
+				<button type="submit" class="btn btn-warning">Reset Password</button>
 			</form>
 		</td>
 		<td>
 			<form action="{{url('user', [$user->id])}}" method="POST">
 				{{method_field('DELETE')}}
 				{{ csrf_field() }}
-				<button>Delete</button>
+				<button type="submit" class="btn btn-danger">Delete</button>
 			</form>
 		</td>
  	</tr>
  	@endforeach
  </table>
+ <div>
+	{{ $users->links() }}
+</div>
  @endif
-</body>
-</html>
+@endsection

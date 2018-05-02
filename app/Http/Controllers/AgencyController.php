@@ -17,7 +17,7 @@ class AgencyController extends Controller
     public function index()
     {
         //
-        $agency = DB::table('agencies')->get();
+        $agency = DB::table('agencies')->paginate(10);
         return view('agency.index')
                     ->with('agencies', $agency);
     }
@@ -61,7 +61,7 @@ class AgencyController extends Controller
         $agency->country = $data['country'];
         $agency->save();
         return redirect ('/agency/create')
-                         ->with('success','agency information saved successfully');
+                         ->with('success','Agency information saved successfully');
     }
 
     /**

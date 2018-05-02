@@ -60,8 +60,7 @@ class CaregiverController extends Controller
                                              'max_fosterchild_no'=>'required',
                                              'respite'=>'required',
                                              'bio_children_no'=>'required',
-                                             'kinship_children_no'=>'required',
-                                             'foster_children_no'=>'required'
+                                             'kinship_children_no'=>'required'
                                             ]);
 
         $user->email = $data2['email'];
@@ -86,7 +85,6 @@ class CaregiverController extends Controller
             $caregiver->respite = $data['respite'];
             $caregiver->bio_children_no = $data['bio_children_no'];
             $caregiver->kinship_children_no = $data['kinship_children_no'];
-            $caregiver->foster_children_no = $data['foster_children_no'];
             $caregiver->save();
 
 
@@ -158,8 +156,7 @@ class CaregiverController extends Controller
                                              'max_fosterchild_no'=>'required',
                                              'respite'=>'required',
                                              'bio_children_no'=>'required',
-                                             'kinship_children_no'=>'required',
-                                             'foster_children_no'=>'required'
+                                             'kinship_children_no'=>'required'
                                             ]);
 
                     $caregiver->first_name = $data['first_name'];
@@ -177,7 +174,6 @@ class CaregiverController extends Controller
                     $caregiver->respite = $data['respite'];
                     $caregiver->bio_children_no = $data['bio_children_no'];
                     $caregiver->kinship_children_no = $data['kinship_children_no'];
-                    $caregiver->foster_children_no = $data['foster_children_no'];
                     $caregiver->save();
 
                     return redirect('/caregiver')
@@ -216,5 +212,11 @@ class CaregiverController extends Controller
             return redirect('/caregiver')
                     ->with('error', 'Invalid caregiver information. Try again');
         }
+    }
+
+    //return caregiver home page
+    public function home() 
+    {
+        return view('caregiver.home');
     }
 }

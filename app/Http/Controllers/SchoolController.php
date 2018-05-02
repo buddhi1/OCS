@@ -108,14 +108,14 @@ class SchoolController extends Controller
                 $school->save();
 
                 return redirect('/school')
-                                ->with('success', 'Child information updated successfully!!!');
+                                ->with('success', 'School information updated successfully!!!');
             } else {
                 return redirect('/school')
-                        ->with('error', 'Child information not found. Try again');
+                        ->with('error', 'School information not found. Try again');
             }
         } else {
             return redirect('/school')
-                    ->with('error', 'Invalid child information. Try again');
+                    ->with('error', 'Invalid school information. Try again');
         }
     }
 

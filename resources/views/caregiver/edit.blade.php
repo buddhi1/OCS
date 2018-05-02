@@ -33,9 +33,9 @@
   <form action="{{url('/caregiver', [$caregiver->id])}}" method="POST">
     {{ method_field('PATCH') }}
     {{ csrf_field() }}      
-        <div class="container">
+        <div class="container-flex">
           <legend>Caregiver Information</legend>  
-          <div class="row">
+          <div>
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
                     <div class="form-group">
@@ -89,7 +89,11 @@
                     <div class="form-group">
                       <label for="example-number-input" class="col-2 col-form-label">What is the type of your license?</label>
                       <div class="col-10">
-                        <input class="form-control" type="text" value="{{ $caregiver->license_type }}" id="example-number-input" name="license_type">
+                      <select name="license_type" class="form-control">
+                        <option value="1" @if($caregiver->license_type == 1) {{"selected"}} @endif>Care Giver</option>
+                        <option value="2" @if($caregiver->license_type == 2) {{"selected"}} @endif>Kinship</option>
+                      </select>
+                        <!-- <input class="form-control" type="text" value="" id="example-number-input" name="license_type"> -->
                       </div>
                     </div>
                     <div class="form-group">
@@ -101,13 +105,22 @@
                     <div class="form-group">
                       <label for="example-number-input" class="col-2 col-form-label">What level of care are you licenced for?</label>
                       <div class="col-10">
-                        <input class="form-control" type="text" value="{{ $caregiver->license_level }}" id="example-number-input" name="license_level">
+                      <div class="col-10">
+                        <select name="license_level" class="form-control">
+                          <option value="1" @if($caregiver->license_level==1) {{"selected"}} @endif>Level 1</option>
+                          <option value="2" @if($caregiver->license_level==2) {{"selected"}} @endif>Level 2</option>
+                          <option value="3" @if($caregiver->license_level==3) {{"selected"}} @endif>Level 3</option>
+                          <option value="4" @if($caregiver->license_level==4) {{"selected"}} @endif>Level 4</option>
+                          <option value="5" @if($caregiver->license_level==5) {{"selected"}} @endif>Level 5</option>
+                          <option value="6" @if($caregiver->license_level==6) {{"selected"}} @endif>Level 6</option>
+                        </select>
+                        <!-- <input class="form-control" type="text" value="" id="example-number-input" name="license_level"> -->
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="example-number-input" class="col-2 col-form-label">What is the number of max foster child you can adopt?</label>
                       <div class="col-10">
-                        <input class="form-control" type="text" value="{{ $caregiver->max_fosterchild_no }}" id="example-number-input" name="max_fosterchild_no">
+                        <input class="form-control" type="number" value="{{ $caregiver->max_fosterchild_no }}" id="example-number-input" name="max_fosterchild_no">
                       </div>
                     </div>
                     <div class="form-group">
@@ -123,37 +136,37 @@
                     </div>
                     <fieldset>
    <legend>How many Children do you have?</legend>
-   <div class='row'>
+   <div>
        <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_title">Biological children</label>
-               <input class="form-control" value="{{ $caregiver->bio_children_no }}" id="user_title" name="bio_children_no" size="30" type="text" />
+               <input class="form-control" value="{{ $caregiver->bio_children_no }}" id="user_title" name="bio_children_no" size="30" type="number" />
            </div>
        </div>
        <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_firstname">Kinship children</label>
-               <input class="form-control" value="{{ $caregiver->kinship_children_no }}" id="user_firstname" name="kinship_children_no" size="30" type="text" />
+               <input class="form-control" value="{{ $caregiver->kinship_children_no }}" id="user_firstname" name="kinship_children_no" size="30" type="number" />
            </div>
        </div>
-       <div class='col-sm-4'>
+       <!-- <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_lastname">Foster/Adoptive Placement</label>
                <input class="form-control" value="{{ $caregiver->foster_children_no }}" id="user_lastname" name="foster_children_no" size="30" type="text" />
            </div>
 
 
-       </div>
+       </div> -->
    </div>
 
 </fieldset>
-        <div class="container">
-          <div class="row">
+        <!-- <div class="container"> -->
+          <div>
             <div class="col-xs-4 col-sm-4 col-md-6">
-          <button class="btn btn-primary btn-sx" type="submit">Submit</button>
+          <button class="btn btn-primary btn-sx" type="submit">Update</button>
         </div>
           </div>
-        </div>
+        <!-- </div> -->
   </form>
 @endsection
   <!-- </body>

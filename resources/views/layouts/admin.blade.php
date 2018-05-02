@@ -1,42 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="{{ app()->getLocale() }}" dir="ltr">
 <head>
-	<title></title>
+  <title>{{ config('app.name', 'Laravel') }}</title>	
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8">
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    <!-- <script src="http://code.jquery.com/jquery-3.3.1.min.js"
                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
                crossorigin="anonymous">
-    </script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </script> -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
     <link rel="stylesheet" href="{{url('/')}}/css/ChildrensInformation.css">
 
 
-    <meta charset="utf-8">
 
     <!-- jQuery library -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 
   </head>
   <body>
+  <div class="nav-bar">
+  <h1 class="head" id="head">Orphan Care Solutions</h1>
+  
+  <a href="{{ route('logout') }}"
+      onclick="event.preventDefault();
+               document.getElementById('logout-form').submit();" class="logout">
+      <span class="glyphicon">&#xe163;</span>Logout
+  </a>
 
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+      {{ csrf_field() }}
+  </form>
 
-        <div class="menu-box" id="accordion">
+  <!-- <a href="../auth/logout" class="logout"><span class="glyphicon">&#xe163;</span> Logout</a> -->
+  <p class="welcome">Welcome {{ Auth::user()->name }} !</p>
+</div>
+<div class="vmenu-button" id="ham"><span class="glyphicon">&#xe236;</span></div>
+    <div>
+      <div class="menu-box" id="accordion">
       <ul>
         <li>
-          <a href="../users/profile" class="vert-menu-item-home">
+          <a href="{{url('admin')}}" class="vert-menu-item-home">
             <span class="glyphicon">&#xe021;</span>
             Home
           </a>
@@ -47,7 +64,7 @@
           </a>
           <ul id="prof-col" class="col collapse">
 
-            <li><a href="/SMP/users/changePassword">Change Password</a></li>
+            <li><a href="{{url('/user/changepassword')}}">Change Password</a></li>
           </ul>
         </li>
         <li>
@@ -55,8 +72,8 @@
             Users
           </a>
           <ul id="user-col" class="col collapse">
-            <li><a href="../users/create">Create User</a></li>
-            <li><a href="../users/index">All Users</a></li>
+            <li><a href="{{url('user/create')}}">Create User</a></li>
+            <li><a href="{{url('user')}}">All Users</a></li>
           </ul>
         </li>
         <li>
@@ -64,8 +81,8 @@
             Care Giver
           </a>
           <ul id="careGiver-col" class="col collapse">
-            <li><a href="">Edit</a></li>
-            <li><a href="">View</a></li>
+            <li><a href="{{url('caregiver/create')}}">Add</a></li>
+            <li><a href="{{url('caregiver')}}">View</a></li>
           </ul>
         </li>
 
@@ -74,8 +91,8 @@
             Agency
           </a>
           <ul id="agency-col" class="col collapse">
-            <li><a href="">Edit</a></li>
-            <li><a href="">View</a></li>
+            <li><a href="{{url('agency/create')}}">Add</a></li>
+            <li><a href="{{url('agency')}}">View</a></li>
           </ul>
         </li>
         <li>
@@ -83,8 +100,8 @@
             Case Worker
           </a>
           <ul id="CaseWorker-col" class="col collapse">
-            <li><a href="">Edit</a></li>
-            <li><a href="">View</a></li>
+            <li><a href="{{url('caseworker/create')}}">Add</a></li>
+            <li><a href="{{url('caseworker')}}">View</a></li>
           </ul>
         </li>
 
@@ -94,25 +111,33 @@
             Child
           </a>
           <ul id="child-col" class="col collapse">
-            <li><a href="">Edit</a></li>
-            <li><a href="">View</a></li>
+            <li><a href="{{url('child/create')}}">Add</a></li>
+            <li><a href="{{url('child')}}">View</a></li>
           </ul>
         </li>
-
-
         <li>
           <a class="vert-menu-item collapsed" data-parent="#accordion" data-toggle="collapse" data-target="#advocate-col">
             Advocate
           </a>
           <ul id="advocate-col" class="col collapse">
-            <li><a href="">Edit</a></li>
-            <li><a href="">View</a></li>
+            <li><a href="{{url('advocate/create')}}">Add</a></li>
+            <li><a href="{{url('advocate')}}">View</a></li>
           </ul>
         </li>
-
-
+        <li>
+          <a class="vert-menu-item collapsed" data-parent="#accordion" data-toggle="collapse" data-target="#school-col">
+            School
+          </a>
+          <ul id="school-col" class="col collapse">
+            <li><a href="{{url('school/create')}}">Add</a></li>
+            <li><a href="{{url('school')}}">View</a></li>
+          </ul>
+        </li>
       </ul>
-    </div>  
-  @yield('content')
+    </div> 
+    <div class="workspace-box"> 
+      @yield('content')
+    </div>
+  </div>
   </body>
 </html>

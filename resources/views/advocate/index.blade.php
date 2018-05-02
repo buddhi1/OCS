@@ -1,29 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-
-<style media="screen">
-	.btn-danger{
-
-			margin-left: -100px;
-	}
-	.btn-primary{
-		margin-left: -60px;
-	}
-
-
-
-	</style>
-
-<body> -->
 @extends('layouts.admin')
 
 @section('content')
@@ -44,9 +18,9 @@
   @endif
 
 
-		<div class="container">
+		<div class="container-flex">
 
-				<div class="row">
+				<div>
 
 						<div class="col-md-12 col-xs-12">
 							<table class="table table-bordred table-striped">
@@ -75,20 +49,23 @@
 
 									<td>
 										<form  action="{{url('advocate', [$advocate->id])}}/edit">
-											<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+											<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
 										</form>
 									</td>
 									<td>
 										<form action="{{url('advocate', [$advocate->id])}}" method="POST">
 												 {{method_field('DELETE')}}
 											{{ csrf_field() }}
-											<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+											<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>
 											<input type="hidden" value="{{$advocate->id}}" name="id">
 										</form>
 									</td>
 								</tr>
 								@endforeach
 							</table>
+							<div>
+								{{ $advocates->links() }}
+							</div>
 						@endif
 						</div>
 
@@ -97,5 +74,4 @@
 		</div>
 
 @endsection
-<!-- </body>
-</html> -->
+

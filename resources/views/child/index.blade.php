@@ -1,34 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>Childern information</title>
-</head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
----- Include the above in your HEAD tag --------
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-<style media="screen">
-	.btn-danger{
-
-			margin-left: -270px;
-	}
-	.btn-primary{
-		margin-left: -168px;
-	}
-
-	.btn-success{
-		margin-left: -70px;
-	}
-
-	.btn-warning{
-			margin-left: -220px;
-	}
-
-	</style>
-<body> -->
 @extends('layouts.admin')
 
 @section('content')		
@@ -47,9 +16,9 @@
       {{\Session::get('success')}}
   </div>
  @endif
-<div class="container">
+<div class="container-flex">
 
-	<div class="row">
+	<div>
 
 			<div class="col-md-12">
 
@@ -88,31 +57,31 @@
 									<form  action="{{url('child/gift')}}" method="GET">
 
 										<input type="hidden" name="child_id" value="{{ $child->id }}">
-										<td><p data-placement="top" data-toggle="tooltip" title="Add"><button class="btn btn-success btn-xs" data-title="Add" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-plus"></span></button></p></td>
+										<p data-placement="top" data-toggle="tooltip" title="Add"><button class="btn btn-success btn-xs" data-title="Add" data-toggle="modal" data-target="#add" ><span class="glyphicon glyphicon-plus"></span></button></p>
 									</form>
 								</td>
 								<td>
 									<form  action="{{url('child', [$child->id])}}/edit">
-										<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+										<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
 									</form>
 								</td>
 								<td>
 									<form action="{{url('child', [$child->id])}}" method="POST">
 											{{method_field('DELETE')}}
 										{{ csrf_field() }}
-										<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+										<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>
 									</form>
 								</td>
 								<td>
 									@if($child->assign_status == 1)
 										<form action="{{url('custody/remove')}}" method="GET">
 											<input type="hidden" name="child_id" value="{{$child->id}}">
-											<button>Remove</button>
+											<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-warning btn-xs" data-title="Remove" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-user"></span> Remove</button> </p>
 										</form>
 									@else
 										<form action="{{url('custody/create')}}" method="GET">
 											<input type="hidden" name="child_id" value="{{$child->id}}">
-											<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-warning btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-user"></span></button></p></td>
+											<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs" data-title="Assign" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-user"></span> Assign</button> </p>
 										</form>
 									@endif
 								</td>
@@ -121,13 +90,12 @@
 							</tr>
 							@endforeach
 						</table>
-						{{ $children->links() }}
+						<div>
+							{{ $children->links() }}
+						</div>
 					@endif
 					</div>
 			</div>
 	</div>
 </div>
 @endsection
-<!-- </body>
-</html>
- -->

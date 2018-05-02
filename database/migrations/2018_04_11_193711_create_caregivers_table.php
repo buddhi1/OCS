@@ -31,7 +31,6 @@ class CreateCaregiversTable extends Migration
             $table->tinyInteger('respite');
             $table->string('bio_children_no');
             $table->string('kinship_children_no');
-            $table->string('foster_children_no');
             $table->integer('current_children_no')->default(0);
             $table->timestamps();
         });

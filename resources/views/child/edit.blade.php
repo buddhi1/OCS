@@ -1,20 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Caregiver Information</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="{{url('/')}}/css/ChildrensInformation.css">
-  </head>
-  <body> -->
   @extends('layouts.admin')
 
   @section('content') 
@@ -37,9 +20,9 @@
   <form action="{{url('child', [$child->id])}}" method="POST">
     {{method_field('PATCH')}}
     {{ csrf_field() }}
-        <div class="container">
+        <div class="container-flex">
           <legend>Children Information</legend>
-          <div class="row">
+          <div>
                 <div class="col-md-12 col-xs-12">
                   <div class="form-group">
                     <div class="form-group">
@@ -116,7 +99,7 @@
                     </div>
                     <fieldset>
    <legend>School Info for school supplies?</legend>
-   <div class='row'>
+   <div>
        <!-- <div class='col-sm-4'>
            <div class='form-group'>
                <label for="user_title">What is school district?</label>
@@ -156,9 +139,9 @@
 
 
 
-        <div class="container">
+        <!-- <div class="container"> -->
 
-            <div class="row">
+            <div>
 
                 <div class="col-xs-4 col-sm-4 col-md-6">
 
@@ -196,7 +179,7 @@
 
 
 
-        </div>
+        <!-- </div> -->
 
 
 
@@ -208,16 +191,20 @@
 
 
 
-        <div class="container">
-          <div class="row">
+        <!-- <div class="container"> -->
+          <div>
             <div class="col-xs-4 col-sm-4 col-md-6">
           <button class="btn btn-primary btn-sx" type="submit">Update</button>
         </div>
           </div>
-        </div>
+        <!-- </div> -->
     </form>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
       var url = "{{url('/')}}";
+      var dob = '{{$child->dob}}';
     </script>
      <script type="text/javascript" src="{{url('/')}}/js/ajax.js"></script>
     <script type="text/javascript" src="{{url('/')}}/js/general.js"></script>
@@ -230,6 +217,8 @@
         document.getElementById('caseworker-list').style.display = 'none';
         document.getElementById('school-list').style.display = 'none';
         document.getElementById('advocate-list').style.display = 'none';
+        document.getElementById('datepicker').value = dob;
+
       };
       document.getElementById("caseworker_id").addEventListener("focus", caseworkerDropDown);
       document.getElementById("caseworker_id").addEventListener("keyup", caseworkerDropDown);
@@ -248,8 +237,6 @@
         $( "#datepicker" ).datepicker( "option", "showAnim", "slideDown" );
         $( "#datepicker" ).datepicker( "option", "dateFormat", "yy/mm/dd" );
       } );
-
     </script>
     @endsection
-  <!-- </body>
-</html> -->
+ 

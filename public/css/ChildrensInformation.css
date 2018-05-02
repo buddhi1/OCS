@@ -1,6 +1,6 @@
 body{
   background-color:#F0F2F2;
-  padding-top: 70px;
+  padding-top: 0px;
 
 }
 
@@ -29,6 +29,7 @@ body{
     width: 316px;
     -webkit-transition: width 2s;
     transition: width 2s;
+    z-index: 9999;
 }
 
 .caseworker-list li{
@@ -42,12 +43,6 @@ body{
 .caseworker-list li:hover{
     background-color: #e4dcdc;
     cursor: pointer;
-}
-
-body{
-  background-color:#F0F2F2;
-  padding-top: 70px;
-
 }
 
  h1{
@@ -150,7 +145,7 @@ body{
 
  }
  #accordion{
-   margin-top: -90px;
+   margin-top: -60px;
  }
 
  .workspace-def{
@@ -165,7 +160,8 @@ body{
 
  .menu-box {
      background-color: #343a40;
-     width: 270px;
+     width: 210px;
+     /*width: 15%;*/
      display: inline-block;
      height: 100%;
      position: fixed;
@@ -177,7 +173,6 @@ body{
      transition: width .6s;
      padding-top: 27px;
  }
-
 
 
 

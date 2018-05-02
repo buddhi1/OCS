@@ -17,7 +17,7 @@ class AdvocateController extends Controller
     public function index()
     {
         //
-        $advocates = DB::table('advocates')->get();
+        $advocates = DB::table('advocates')->paginate(10);
         return view('advocate.index')
                     ->with('advocates', $advocates);
     }

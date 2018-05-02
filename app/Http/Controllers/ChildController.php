@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Child;
 
 class ChildController extends Controller
@@ -61,7 +62,7 @@ class ChildController extends Controller
         $child->advocate_id = $data['advocate_id'];
         $child->dob = $data['dob'];
         $child->school_id = $request['school_id'];
-        $child->school_id = $request['class'];
+        $child->class = $request['class'];
         $child->address1 = $data['address1'];
         $child->city = $data['city'];
         $child->zip = $data['zip'];
@@ -138,7 +139,7 @@ class ChildController extends Controller
                 $child->advocate_id = $data['advocate_id'];
                 $child->dob = $data['dob'];
                 $child->school_id = $request['school_id'];
-                $child->school_id = $request['class'];
+                $child->class = $request['class'];
                 $child->address1 = $data['address1'];
                 $child->city = $data['city'];
                 $child->zip = $data['zip'];
@@ -179,5 +180,26 @@ class ChildController extends Controller
             return redirect('/child')
                     ->with('error', 'Invalid child information. Try again');
         }
+    }
+
+    //return all children assigned to a caregiver
+    public function assigned()
+    {
+        $caregiver = DB::table('caregivers')
+                            ->select('id')
+                            ->where('user_id', '=', Auth::id())
+                            ->first();
+        if ($caregiver) {
+            $children = DB::table('children')
+                        ->join('custodies', 'children.id', '=', 'child_id')
+                        ->where('caregiver_id', '=', $caregiver->id)
+                        ->paginate(10);
+            return view('child.assigned')
+                        ->with('children', $children);
+        } else {
+            return redirect('care_giver')
+                        ->with('error', 'Invalid information. Please try again');
+        }
+        
     }
 }

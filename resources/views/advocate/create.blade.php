@@ -1,15 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body> -->
 @extends('layouts.admin')
 
 @section('content')
@@ -32,10 +20,10 @@
 		{{csrf_field()}}
 
 
-		<div class="container">
+		<div class="container-flex">
 		          <legend>Advocate Information</legend>
 
-		          <div class="row">
+		          <div>
 		                <div class="col-md-12 col-xs-12">
 		                  <div class="form-group">
 		                    <div class="form-group">
@@ -81,16 +69,13 @@
 		                      </div>
 		                    </div>
 
-												<div class="container">
-		          <div class="row">
+												<!-- <div class="container"> -->
+		          <div>
 		            <div class="col-xs-4 col-sm-4 col-md-6">
-		          <button class="btn btn-primary btn-sx" type="Submıt">Submit</button>
+		          <button class="btn btn-primary btn-sx" type="Submıt">Save</button>
 		        </div>
 		          </div>
-		        </div>
+		        <!-- </div> -->
 
 </form>
 @endsection
-<!-- </body>
-</html>
- -->

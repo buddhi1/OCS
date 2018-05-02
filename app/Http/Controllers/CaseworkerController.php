@@ -17,7 +17,7 @@ class CaseworkerController extends Controller
     public function index()
     {
         //
-        $caseworker = DB::table('caseworkers')->paginate(2);
+        $caseworker = DB::table('caseworkers')->paginate(10);
         return view('caseworker.index')
                     ->with('caseworkers', $caseworker);
     }

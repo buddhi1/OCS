@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 class UserController extends Controller
@@ -16,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         return view('user.index')
                     ->with('users', $users);
     }
@@ -104,6 +106,9 @@ class UserController extends Controller
             if ($user) {
                 if ($request['new_password'] != "" && $request['confirm_password'] != "" ) {
                     if ($request['new_password'] == $request['confirm_password']) {
+                        $data = $this->validate($request, [  
+                                             'new_password'=>'min:6'
+                                            ]);
                         $user->password = bcrypt($request['new_password']);
                         $user->save();
                         return redirect('/user')
@@ -153,5 +158,27 @@ class UserController extends Controller
             return redirect('/user')
                     ->with('error', 'Invalid user information. Try again');
         }
+    }
+
+    //chnage password of the user
+    public function changePsw(Request $request)
+    {
+        if (Hash::check($request['old_password'], Auth::user()->password)) {
+            dd(true);
+        }
+    }
+
+    //chnage password of the user
+    public function changePw(Request $request)
+    {
+        if (Hash::check($request['old_password'], Auth::user()->password)) {
+            dd(true);
+        }
+    }
+
+    //return admin home page
+    public function home() 
+    {
+        return view('auth.admin_home');
     }
 }

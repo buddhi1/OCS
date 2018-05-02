@@ -1,53 +1,21 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-
-<style media="screen">
-	.btn-danger{
-
-			margin-left: -320px;
-
-	}
-	.btn-primary{
-		margin-left: -185px;
-	}
-
-	#btnprimary{
-		margin-left: -1px;
-		margin-top:	5px;
-	}
-	.selectClass{
-		margin-top: 10px;
-	}
-
-
-
-	</style>
-<body> -->
 
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
-		<div class="row">
+<div class="container-flex">
+		<div>
 			<div class="col-md-6 col-xs-12">
 
 				<div>
 					<legend>Gift</legend>
 					<form action="{{url('/child/gift')}}" method="POST">
 						{{ csrf_field() }}
-						<input class="form-control" type="text" name="item">
-						<input class="form-control" type="hidden" name="child_id" value="{{$child_id}}">
-						<select class="selectClass" name="type">
+						<div>
+							<label>Item Description</label>
+							<input class="form-control" type="text" name="item">
+							<input class="form-control" type="hidden" name="child_id" value="{{$child_id}}">	
+						</div>
+						<select class="form-control" name="type">
 							<option value="0">Gift</option>
 							<option value="1">School item</option>
 						</select>
@@ -60,13 +28,9 @@
 		</div>
 </div>
 
+<div class="container-flex">
 
-
-
-
-<div class="container">
-
-	<div class="row">
+	<div>
 
 			<div class="col-md-12 col-xs-12">
 
@@ -93,14 +57,14 @@
 							</td>
 							<td>
 								<form  action="{{url('child/gift', [$gift->id])}}/edit">
-									<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+									<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
 								</form>
 							</td>
 							<td>
 								<form action="{{url('child/gift', [$gift->id])}}" method="POST">
 										{{method_field('DELETE')}}
 									{{ csrf_field() }}
-									<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+									<p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p>
 								</form>
 							</td>
 						</tr>
@@ -117,7 +81,3 @@
 </div>
 
 @endsection
-<!-- 
-</body>
-</html>
- -->

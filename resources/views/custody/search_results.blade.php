@@ -1,9 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>Search Results</title>
-</head>
-<body> -->
 @extends('layouts.admin')
 
 @section('content')	
@@ -22,7 +16,7 @@
       {{\Session::get('success')}}
   </div>
  @endif
-<table border="1">
+<table class="table table-striped">
 	<tr>
 		<th>ID</th>
 		<th>Name</th>
@@ -31,8 +25,8 @@
 		<th>License No</th>
 		<th>License Level</th>
 		<th>No of children has</th>
-		<th>Number of adoption limit</th>
-		<th>Assign a child</th>
+		<th>Max Foster Children</th>
+		<th>Assign child</th>
 	</tr>
 	@foreach($caregiver_results as $caregiver)
 	<tr>
@@ -42,15 +36,13 @@
 		<td>{{$caregiver->zipcode}}</td>
 		<td>{{$caregiver->license_no}}</td>
 		<td>{{$caregiver->license_level}}</td>
-		<td>{{$caregiver->bio_children_no +
-			 $caregiver->foster_children_no +
-			 $caregiver->kinship_children_no}}</td>
+		<td>{{$caregiver->current_children_no}}</td>
 		<td>{{$caregiver->max_fosterchild_no}}</td>
 		<td>
 			<form action="{{url('custody/assign')}}" method="GET">
 				<input type="hidden" name="caregiver_id" value="{{$caregiver->id}}">
 				<input type="hidden" name="child_id" value="{{$child_id}}">
-				<button type="submit">Assign</button>
+				<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs" data-title="Assign" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-user"></span> Assign</button> </p>
 			</form>
 		</td>
 	</tr>
@@ -61,5 +53,3 @@
 </div>
  @endif
  @endsection
-<!-- </body>
-</html> -->
