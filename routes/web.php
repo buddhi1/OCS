@@ -20,7 +20,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+// gift controller resource route
+// Route::resource('child/gift', 'GiftController');
+	
 //route group for caregiver
 Route::group(['middleware' => 'App\Http\Middleware\CaregiverMiddleware'], function () {
 	Route::get('care_giver/changepassword', function () {

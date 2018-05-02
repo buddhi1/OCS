@@ -147,6 +147,10 @@ class UserController extends Controller
                     return redirect('/user')
                         ->with('error', 'This is a Care Giver account. Use care givers tab to delete account');
                 }
+                if ($user->id == 1 || $user->id == Auth::id()) {
+                    return redirect('/user')
+                        ->with('error', 'Illegal operation');
+                }
                 $user->delete();
                 return redirect('/user')
                         ->with('success', 'User information deleted successfully');
